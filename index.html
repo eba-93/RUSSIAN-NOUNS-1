@@ -45,7 +45,7 @@
 
     <!-- Header Navigation -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-indigo-100 shadow-sm">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('home')">
                 <div class="bg-gradient-to-tr from-indigo-600 to-violet-500 text-white p-2.5 rounded-2xl shadow-md">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,126 +53,126 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="font-bold font-comfortaa text-lg text-indigo-950">Орос хэлний сорилт</h1>
+                    <h1 class="font-bold font-comfortaa text-xl text-indigo-950">Орос хэлний сорилт</h1>
                     <p class="text-xs text-indigo-500 font-semibold">1-р хэсэг: Дом, быт, еда</p>
                 </div>
             </div>
 
             <!-- Stats Bar -->
-            <div class="flex items-center gap-2">
-                <button onclick="showScreen('stats')" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-3.5 py-1.5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-1.5 border border-indigo-200">
+            <div class="flex items-center gap-3">
+                <button onclick="showScreen('stats')" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5 border border-indigo-200">
                     <span>📊 Миний амжилт</span>
                 </button>
-                <button onclick="startErrorCorrectionMode()" class="bg-amber-50 hover:bg-amber-100 text-amber-800 px-3.5 py-1.5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-1.5 border border-amber-300">
+                <button onclick="startErrorCorrectionMode()" class="bg-amber-50 hover:bg-amber-100 text-amber-800 px-4 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5 border border-amber-300">
                     <span>🛠 Работа над ошибкой</span>
-                    <span id="error-badge" class="bg-amber-500 text-white text-xs px-1.5 py-0.5 rounded-full font-extrabold hidden">0</span>
+                    <span id="error-badge" class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full font-extrabold hidden">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 mt-6 flex-grow w-full">
+    <main class="max-w-6xl mx-auto px-4 mt-8 flex-grow w-full">
         <!-- HOME SCREEN -->
-        <div id="screen-home" class="space-y-6">
+        <div id="screen-home" class="space-y-8">
             <!-- Welcome Banner -->
-            <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-                <div class="relative z-10 max-w-xl">
-                    <span class="bg-white/20 text-indigo-100 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Олимпиадын бэлтгэл</span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-3 font-comfortaa">Гэр ахуй, байр сууц, хоол хүнс ба ахуйн эд зүйлс</h2>
-                    <p class="text-indigo-100 mt-2 text-sm sm:text-base leading-relaxed">Нийт 31 үгээс тогтох 5 төрлийн дасгалаар өөрийн мэдлэгээ шалгаарай. Дасгал бүрт 20 санамсаргүй үг асуугдана.</p>
+            <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-700 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-white/20 text-indigo-100 text-xs px-3.5 py-1.5 rounded-full font-bold uppercase tracking-wider">Олимпиадын бэлтгэл</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 font-comfortaa leading-tight">Гэр ахуй, байр сууц, хоол хүнс ба ахуйн эд зүйлс</h2>
+                    <p class="text-indigo-100 mt-3 text-base sm:text-lg leading-relaxed">Нийт 31 үгээс тогтох 5 төрлийн дасгалаар өөрийн мэдлэгээ шалгаарай. Дасгал бүрт 20 санамсаргүй үг асуугдана.</p>
                 </div>
                 <div class="absolute -right-8 -bottom-10 opacity-20 pointer-events-none">
-                    <svg class="w-64 h-64 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+                    <svg class="w-80 h-80 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
                 </div>
             </div>
 
             <!-- Quiz Type Selection Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Mode 1 -->
-                <div onclick="startQuiz(1)" class="bg-white p-5 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                <div onclick="startQuiz(1)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
                             🇷🇺➡️🇲🇳
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg">1. Оросоос монгол руу</h3>
-                        <p class="text-slate-500 text-xs mt-1">Орос үгэнд тохирох зөв монгол утгыг 4 сонголтоос сонгох.</p>
+                        <h3 class="font-bold text-slate-800 text-xl">1. Оросоос монгол руу</h3>
+                        <p class="text-slate-500 text-sm mt-2">Орос үгэнд тохирох зөв монгол утгыг 4 сонголтоос сонгох.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-indigo-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-indigo-600">
                         <span>20 асуулт</span>
                         <span>Эхлэх &rarr;</span>
                     </div>
                 </div>
 
                 <!-- Mode 2 -->
-                <div onclick="startQuiz(2)" class="bg-white p-5 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                <div onclick="startQuiz(2)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
                             🇲🇳➡️🇷🇺
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg">2. Монголоос орос руу</h3>
-                        <p class="text-slate-500 text-xs mt-1">Монгол орчуулгад тохирох зөв орос үгийг 4 сонголтоос сонгох.</p>
+                        <h3 class="font-bold text-slate-800 text-xl">2. Монголоос орос руу</h3>
+                        <p class="text-slate-500 text-sm mt-2">Монгол орчуулгад тохирох зөв орос үгийг 4 сонголтоос сонгох.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-emerald-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-emerald-600">
                         <span>20 асуулт</span>
                         <span>Эхлэх &rarr;</span>
                     </div>
                 </div>
 
                 <!-- Mode 3 -->
-                <div onclick="startQuiz(3)" class="bg-white p-5 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                <div onclick="startQuiz(3)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
                             ✍️🇲🇳
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg">3. Оросоос бичиж орчуулах</h3>
-                        <p class="text-slate-500 text-xs mt-1">Орос үгийг хараад монгол орчуулгыг гараас бичиж оруулах.</p>
+                        <h3 class="font-bold text-slate-800 text-xl">3. Оросоос бичиж орчуулах</h3>
+                        <p class="text-slate-500 text-sm mt-2">Орос үгийг хараад монгол орчуулгыг гараас бичиж оруулах.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-purple-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-purple-600">
                         <span>20 асуулт</span>
                         <span>Эхлэх &rarr;</span>
                     </div>
                 </div>
 
                 <!-- Mode 4 -->
-                <div onclick="startQuiz(4)" class="bg-white p-5 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                <div onclick="startQuiz(4)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
                             ✍️🇷🇺
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg">4. Монголоос орос руу бичих</h3>
-                        <p class="text-slate-500 text-xs mt-1">Монгол утгад тохирох орос үгийг шивж оруулах (өргөлт шаардлагагүй).</p>
+                        <h3 class="font-bold text-slate-800 text-xl">4. Монголоос орос руу бичих</h3>
+                        <p class="text-slate-500 text-sm mt-2">Монгол утгад тохирох орос үгийг шивж оруулах (өргөлт шаардлагагүй).</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-amber-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-amber-600">
                         <span>20 асуулт</span>
                         <span>Эхлэх &rarr;</span>
                     </div>
                 </div>
 
                 <!-- Mode 5 -->
-                <div onclick="startQuiz(5)" class="bg-white p-5 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                <div onclick="startQuiz(5)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
                             🎨🖼️
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg">5. Зурагт сорилт</h3>
-                        <p class="text-slate-500 text-xs mt-1">Зургийг хараад зөв орос нэрийг 4 сонголтоос сонгох.</p>
+                        <h3 class="font-bold text-slate-800 text-xl">5. Зурагт сорилт</h3>
+                        <p class="text-slate-500 text-sm mt-2">Зургийг хараад зөв орос нэрийг 4 сонголтоос сонгох.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-rose-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-rose-600">
                         <span>20 асуулт</span>
                         <span>Эхлэх &rarr;</span>
                     </div>
                 </div>
 
                 <!-- Mode Error Correction -->
-                <div onclick="startErrorCorrectionMode()" class="bg-gradient-to-br from-amber-500 to-orange-600 text-white p-5 rounded-2xl pixar-card cursor-pointer flex flex-col justify-between group shadow-lg">
+                <div onclick="startErrorCorrectionMode()" class="bg-gradient-to-br from-amber-500 to-orange-600 text-white p-6 rounded-2xl pixar-card cursor-pointer flex flex-col justify-between group shadow-lg">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-white/20 text-white flex items-center justify-center font-bold text-xl mb-3 group-hover:rotate-12 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold text-2xl mb-4 group-hover:rotate-12 transition-transform">
                             🛠️
                         </div>
-                        <h3 class="font-bold text-white text-lg">Работа над ошибками</h3>
-                        <p class="text-amber-100 text-xs mt-1">Ихэвчлэн алдаж байсан үгсээр тусгайлан боловсруулсан дасгал ажиллах.</p>
+                        <h3 class="font-bold text-white text-xl">Работа над ошибками</h3>
+                        <p class="text-amber-100 text-sm mt-2">Ихэвчлэн алдаж байсан үгсээр тусгайлан боловсруулсан дасгал ажиллах.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-white/20 flex justify-between items-center text-xs font-bold text-white">
+                    <div class="mt-6 pt-4 border-t border-white/20 flex justify-between items-center text-sm font-bold text-white">
                         <span id="home-error-count-label">Алдаатай үг: 0</span>
                         <span>Дасгал хийх &rarr;</span>
                     </div>
@@ -180,67 +180,67 @@
             </div>
         </div>
 
-        <!-- QUIZ SCREEN -->
-        <div id="screen-quiz" class="hidden max-w-2xl mx-auto space-y-6">
+        <!-- QUIZ SCREEN (ӨРГӨН ФОРМАТ) -->
+        <div id="screen-quiz" class="hidden max-w-4xl mx-auto space-y-6">
             <!-- Top Progress & Header -->
-            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                <button onclick="showScreen('home')" class="text-slate-400 hover:text-slate-700 p-1">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                <button onclick="showScreen('home')" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
-                <div class="flex-1 mx-4">
-                    <div class="flex justify-between text-xs font-bold text-slate-500 mb-1">
+                <div class="flex-1 mx-6">
+                    <div class="flex justify-between text-sm font-bold text-slate-500 mb-1.5">
                         <span id="quiz-mode-title">Дасгал</span>
                         <span>Дасгал <span id="current-q-num" class="text-indigo-600 font-extrabold">1</span> / <span id="total-q-num">20</span></span>
                     </div>
-                    <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                    <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
                         <div id="quiz-progress-bar" class="bg-indigo-600 h-full transition-all duration-300 w-0"></div>
                     </div>
                 </div>
-                <div class="text-xs font-bold bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-xl border border-indigo-100">
-                    Оноо: <span id="quiz-score" class="text-sm">0</span>
+                <div class="text-sm font-bold bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl border border-indigo-100">
+                    Оноо: <span id="quiz-score" class="text-base font-extrabold">0</span>
                 </div>
             </div>
 
             <!-- Question Box Container -->
-            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-xl text-center space-y-6">
+            <div class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-xl text-center space-y-8">
                 <!-- Word prompt & Info -->
                 <div id="question-prompt-container">
-                    <span id="prompt-badge" class="bg-indigo-50 text-indigo-600 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Орос үг</span>
-                    <h2 id="question-target" class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-comfortaa">---</h2>
-                    <p id="question-subtext" class="text-xs text-slate-400 mt-2 font-medium">Зөв хариултыг сонгоно уу</p>
+                    <span id="prompt-badge" class="bg-indigo-50 text-indigo-600 text-xs sm:text-sm px-4 py-1.5 rounded-full font-bold uppercase tracking-wider">Орос үг</span>
+                    <h2 id="question-target" class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-4 font-comfortaa">---</h2>
+                    <p id="question-subtext" class="text-sm text-slate-400 mt-2 font-semibold">Зөв хариултыг сонгоно уу</p>
                 </div>
 
-                <!-- Custom Uploaded Image container for Mode 5 -->
+                <!-- Custom Uploaded Image container for Mode 5 (ДЭЛГЭЦЭНД ТОМРУУЛСАН) -->
                 <div id="svg-image-container" class="hidden flex justify-center items-center py-2">
-                    <div id="svg-render-area" class="w-64 h-56 bg-slate-50 rounded-2xl border border-indigo-100 shadow-inner flex items-center justify-center p-2 overflow-hidden">
-                        <img id="quiz-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                    <div id="svg-render-area" class="w-full max-w-xl h-64 sm:h-80 bg-slate-50 rounded-3xl border border-indigo-100 shadow-inner flex items-center justify-center p-3 overflow-hidden">
+                        <img id="quiz-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-2xl">
                     </div>
                 </div>
 
                 <!-- Option Buttons (For Multiple Choice 1, 2, 5) -->
-                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                     <!-- Dynamic option buttons inserted here -->
                 </div>
 
                 <!-- Text Input Container (For Written Quiz 3, 4) -->
-                <div id="text-input-container" class="hidden space-y-4 max-w-md mx-auto pt-2">
+                <div id="text-input-container" class="hidden space-y-5 max-w-lg mx-auto pt-4">
                     <div class="relative">
                         <input type="text" id="user-text-input" placeholder="Хариултыг энд бичнэ үү..." 
-                               class="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-center font-bold text-lg outline-none transition"
+                               class="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-center font-bold text-xl outline-none transition"
                                autocomplete="off">
                     </div>
                     <button id="btn-submit-text" onclick="checkTextInputAnswer()" 
-                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-indigo-200 btn-bounce transition">
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-indigo-200 btn-bounce transition text-base">
                         Шалгах 🚀
                     </button>
                 </div>
 
                 <!-- Feedback Banner -->
-                <div id="feedback-box" class="hidden p-4 rounded-2xl text-center transition-all animate-fade-in">
-                    <div id="feedback-icon" class="text-3xl mb-1">🎉</div>
-                    <div id="feedback-text" class="font-bold text-base">Зөв байна!</div>
-                    <div id="feedback-detail" class="text-xs mt-1 opacity-90"></div>
-                    <button id="btn-next-question" onclick="nextQuestion()" class="mt-3 px-6 py-2 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                <div id="feedback-box" class="hidden p-5 rounded-2xl text-center transition-all animate-fade-in">
+                    <div id="feedback-icon" class="text-4xl mb-1">🎉</div>
+                    <div id="feedback-text" class="font-bold text-lg">Зөв байна!</div>
+                    <div id="feedback-detail" class="text-sm mt-1 opacity-90"></div>
+                    <button id="btn-next-question" onclick="nextQuestion()" class="mt-4 px-8 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition">
                         Дараагийнх &rarr;
                     </button>
                 </div>
@@ -248,36 +248,36 @@
         </div>
 
         <!-- RESULTS SCREEN -->
-        <div id="screen-result" class="hidden max-w-lg mx-auto space-y-6 text-center">
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl space-y-6">
-                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner">
+        <div id="screen-result" class="hidden max-w-xl mx-auto space-y-6 text-center">
+            <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-xl space-y-6">
+                <div class="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-5xl shadow-inner">
                     🏆
                 </div>
                 <div>
-                    <h2 class="text-2xl font-extrabold text-slate-900 font-comfortaa">Дасгал амжилттай дууслаа!</h2>
-                    <p class="text-slate-500 text-xs mt-1">Таны сорилтын үр дүн</p>
+                    <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">Дасгал амжилттай дууслаа!</h2>
+                    <p class="text-slate-500 text-sm mt-1">Таны сорилтын үр дүн</p>
                 </div>
 
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 grid grid-cols-2 gap-4">
                     <div class="text-center">
                         <p class="text-xs font-bold text-slate-400 uppercase">Эзэлсэн хувь</p>
-                        <p id="result-percentage" class="text-3xl font-extrabold text-indigo-600 mt-1">0%</p>
+                        <p id="result-percentage" class="text-4xl font-extrabold text-indigo-600 mt-1">0%</p>
                     </div>
                     <div class="text-center">
                         <p class="text-xs font-bold text-slate-400 uppercase">Зөв / Нийт</p>
-                        <p id="result-score" class="text-3xl font-extrabold text-slate-800 mt-1">0 / 20</p>
+                        <p id="result-score" class="text-4xl font-extrabold text-slate-800 mt-1">0 / 20</p>
                     </div>
                 </div>
 
-                <div id="result-message" class="text-sm font-semibold text-slate-600 bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
+                <div id="result-message" class="text-base font-semibold text-slate-600 bg-indigo-50 p-5 rounded-2xl border border-indigo-100">
                     Баяр хүргэе! Та сайн ажиллалаа.
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button onclick="showScreen('home')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition text-sm">
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <button onclick="showScreen('home')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 rounded-xl transition text-base">
                         Нүүр хуудас
                     </button>
-                    <button id="btn-retry" onclick="retryCurrentQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-indigo-200 text-sm">
+                    <button id="btn-retry" onclick="retryCurrentQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition shadow-md shadow-indigo-200 text-base">
                         Дахин давах 🔄
                     </button>
                 </div>
@@ -288,65 +288,65 @@
         <div id="screen-stats" class="hidden space-y-6">
             <div class="flex justify-between items-center">
                 <div>
-                    <h2 class="text-2xl font-extrabold text-slate-900 font-comfortaa">📊 Миний амжилт ба Статистик</h2>
-                    <p class="text-xs text-slate-500 mt-1">Хэсэг 1: Дом, быт, еда (Нийт 31 үг)</p>
+                    <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">📊 Миний амжилт ба Статистик</h2>
+                    <p class="text-sm text-slate-500 mt-1">Хэсэг 1: Дом, быт, еда (Нийт 31 үг)</p>
                 </div>
-                <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-50">
+                <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition">
                     &larr; Буцах
                 </button>
             </div>
 
             <!-- Stats Overview Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
+                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-2xl">
                         📚
                     </div>
                     <div>
                         <p class="text-xs text-slate-400 font-bold uppercase">Нийт дагнасан үг</p>
-                        <p id="stat-total-words" class="text-xl font-extrabold text-slate-800">31</p>
+                        <p id="stat-total-words" class="text-2xl font-extrabold text-slate-800">31</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold text-xl">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold text-2xl">
                         ✅
                     </div>
                     <div>
                         <p class="text-xs text-slate-400 font-bold uppercase">Сайн тогтоосон</p>
-                        <p id="stat-mastered-words" class="text-xl font-extrabold text-emerald-600">0</p>
+                        <p id="stat-mastered-words" class="text-2xl font-extrabold text-emerald-600">0</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center font-bold text-xl">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center font-bold text-2xl">
                         ⚠️
                     </div>
                     <div>
                         <p class="text-xs text-slate-400 font-bold uppercase">Дахин давтах (Алдаатай)</p>
-                        <p id="stat-error-words" class="text-xl font-extrabold text-amber-600">0</p>
+                        <p id="stat-error-words" class="text-2xl font-extrabold text-amber-600">0</p>
                     </div>
                 </div>
             </div>
 
             <!-- Detailed Words Table -->
             <div class="bg-white rounded-3xl border border-slate-100 shadow-md overflow-hidden">
-                <div class="p-4 sm:p-6 bg-slate-50/50 border-b border-slate-100 flex justify-between items-center">
-                    <h3 class="font-bold text-slate-800 text-base">Үгсийн сангийн дэлгэрэнгүй тайлан</h3>
-                    <button onclick="resetStats()" class="text-xs text-rose-500 hover:text-rose-700 font-bold">
+                <div class="p-6 bg-slate-50/50 border-b border-slate-100 flex justify-between items-center">
+                    <h3 class="font-bold text-slate-800 text-lg">Үгсийн сангийн дэлгэрэнгүй тайлан</h3>
+                    <button onclick="resetStats()" class="text-sm text-rose-500 hover:text-rose-700 font-bold">
                         Статистик цэвэрлэх
                     </button>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs sm:text-sm">
-                        <thead class="bg-slate-100/70 text-slate-500 uppercase text-[10px] sm:text-xs">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-100/70 text-slate-500 uppercase text-xs">
                             <tr>
-                                <th class="p-3 sm:p-4">Орос үг</th>
-                                <th class="p-3 sm:p-4">Өргөлттэй</th>
-                                <th class="p-3 sm:p-4">Хүйс</th>
-                                <th class="p-3 sm:p-4">Монгол орчуулга</th>
-                                <th class="p-3 sm:p-4 text-center">Онооны харьцаа (Зөв / Буруу)</th>
-                                <th class="p-3 sm:p-4 text-center">Төлөв</th>
+                                <th class="p-4">Орос үг</th>
+                                <th class="p-4">Өргөлттэй</th>
+                                <th class="p-4">Хүйс</th>
+                                <th class="p-4">Монгол орчуулга</th>
+                                <th class="p-4 text-center">Онооны харьцаа (Зөв / Буруу)</th>
+                                <th class="p-4 text-center">Төлөв</th>
                             </tr>
                         </thead>
                         <tbody id="vocab-table-body" class="divide-y divide-slate-100">
@@ -358,31 +358,31 @@
         </div>
 
         <!-- ERROR CORRECTION MENU SCREEN ("Работа над ошибками") -->
-        <div id="screen-error-menu" class="hidden space-y-6 max-w-2xl mx-auto">
-            <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl">
-                <div class="flex items-center space-x-3 mb-3">
-                    <span class="text-3xl">🛠️</span>
-                    <h2 class="text-2xl font-extrabold font-comfortaa">Работа над ошибками</h2>
+        <div id="screen-error-menu" class="hidden space-y-6 max-w-3xl mx-auto">
+            <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl p-8 text-white shadow-xl">
+                <div class="flex items-center space-x-4 mb-3">
+                    <span class="text-4xl">🛠️</span>
+                    <h2 class="text-3xl font-extrabold font-comfortaa">Работа над ошибками</h2>
                 </div>
-                <p class="text-amber-100 text-xs sm:text-sm leading-relaxed">
+                <p class="text-amber-100 text-sm leading-relaxed">
                     Энэ хэсэг нь таны өмнө нь дасгал ажиллахдаа алдаж байсан үгсийг алгоритмаар тодорхойлон, тэдгээрийг сайжруулахад туслах зорилготой.
                 </p>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-md space-y-4">
-                <h3 class="font-bold text-slate-800 text-base flex justify-between items-center">
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-md space-y-6">
+                <h3 class="font-bold text-slate-800 text-lg flex justify-between items-center">
                     <span>Сайжруулах шаардлагатай үгс</span>
-                    <span id="error-list-count" class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold">0 үг</span>
+                    <span id="error-list-count" class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded-full font-bold">0 үг</span>
                 </h3>
 
                 <!-- Error items container -->
-                <div id="error-words-container" class="space-y-2 max-h-80 overflow-y-auto pr-1">
+                <div id="error-words-container" class="space-y-3 max-h-96 overflow-y-auto pr-2">
                     <!-- Dynamic list of error words -->
                 </div>
 
                 <div class="pt-4 border-t border-slate-100">
                     <button id="btn-start-error-quiz" onclick="startErrorQuiz()" 
-                            class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold py-3.5 rounded-2xl shadow-lg shadow-amber-200 transition text-sm flex items-center justify-center space-x-2">
+                            class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold py-4 rounded-2xl shadow-lg shadow-amber-200 transition text-base flex items-center justify-center space-x-2">
                         <span>🎯 Алдаатай үгсээр дасгал эхлүүлэх</span>
                     </button>
                 </div>
@@ -392,7 +392,7 @@
 
     <!-- Global App State and Script -->
     <script>
-        // 1. DATA SOURCE - All 31 words from Section 1: Дом, быт, еда
+        // 1. DATA SOURCE - All 31 words from Section 1: Дом, быт, еда[cite: 1]
         const vocabularyData = [
             { id: 1,  word: "дом",       accent: "до́м",       gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'м' үсгээр төгссөн", mn: "гэр, байшин", altMn: ["гэр", "байшин"], img: "images/дом" },
             { id: 2,  word: "квартира",  accent: "кварти́ра",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орон сууц, сууц", altMn: ["орон сууц", "сууц"], img: "images/квартира" },
@@ -442,478 +442,4 @@
             updateErrorBadge();
         }
 
-        function resetStats() {
-            if (confirm("Та статистик мэдээллээ бүрэн цэвэрлэхдээ итгэлтэй байна уу?")) {
-                userStats = {};
-                vocabularyData.forEach(item => {
-                    userStats[item.id] = { correct: 0, wrong: 0 };
-                });
-                saveStats();
-                renderStatsScreen();
-                alert("Статистик цэвэрлэгдлээ.");
-            }
-        }
-
-        // App Navigation State
-        let currentQuizMode = 1;
-        let quizQuestions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let isErrorCorrectionMode = false;
-
-        // Utility: Clean Russian text (Remove accents, lowercase, trim)
-        function cleanRussianText(text) {
-            if (!text) return "";
-            return text
-                .replace(/[\u0300-\u036f]/g, "") // Remove combining diacritics
-                .replace(/[́']/g, "")            // Remove explicit stress marks
-                .toLowerCase()
-                .trim();
-        }
-
-        // Utility: Clean Mongolian text (Lowercase, trim)
-        function cleanMongolianText(text) {
-            if (!text) return "";
-            return text.toLowerCase().trim();
-        }
-
-        // Helper Shuffle Array
-        function shuffleArray(array) {
-            const arr = [...array];
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
-
-        // Screen Navigation
-        function showScreen(screenId) {
-            document.querySelectorAll('main > div').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById(`screen-${screenId}`);
-            if (target) target.classList.remove('hidden');
-
-            if (screenId === 'stats') {
-                renderStatsScreen();
-            } else if (screenId === 'error-menu') {
-                renderErrorMenuScreen();
-            } else if (screenId === 'home') {
-                updateErrorBadge();
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function updateErrorBadge() {
-            const errorItems = vocabularyData.filter(item => {
-                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
-                return stat.wrong > 0 && stat.wrong >= stat.correct;
-            });
-            const badge = document.getElementById('error-badge');
-            const homeLabel = document.getElementById('home-error-count-label');
-            if (badge) {
-                if (errorItems.length > 0) {
-                    badge.innerText = errorItems.length;
-                    badge.classList.remove('hidden');
-                } else {
-                    badge.classList.add('hidden');
-                }
-            }
-            if (homeLabel) {
-                homeLabel.innerText = `Алдаатай үг: ${errorItems.length}`;
-            }
-        }
-
-        // Quiz Generator Logic
-        function startQuiz(mode) {
-            isErrorCorrectionMode = false;
-            currentQuizMode = mode;
-            generateQuestions(vocabularyData, 20);
-            initQuizUI();
-        }
-
-        function startErrorCorrectionMode() {
-            showScreen('error-menu');
-        }
-
-        function startErrorQuiz() {
-            const errorItems = vocabularyData.filter(item => {
-                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
-                return stat.wrong > 0 && stat.wrong >= stat.correct;
-            });
-
-            if (errorItems.length === 0) {
-                alert("Танд одоогоор тогтоосон алдаатай үг байхгүй байна! Бусад дасгалуудыг ажиллаарай.");
-                return;
-            }
-
-            isErrorCorrectionMode = true;
-            generateQuestions(errorItems, Math.min(20, errorItems.length * 2));
-            initQuizUI();
-        }
-
-        function generateQuestions(sourcePool, count) {
-            quizQuestions = [];
-            const shuffledPool = shuffleArray(sourcePool);
-            const numQuestions = Math.min(count, 20);
-
-            for (let i = 0; i < numQuestions; i++) {
-                const item = shuffledPool[i % shuffledPool.length];
-                let mode = currentQuizMode;
-
-                if (isErrorCorrectionMode) {
-                    mode = Math.floor(Math.random() * 5) + 1;
-                }
-
-                let options = [];
-                if (mode === 1) { // RU -> MN
-                    const distractors = vocabularyData.filter(v => v.id !== item.id);
-                    const shuffDist = shuffleArray(distractors).slice(0, 3);
-                    options = shuffleArray([item.mn, ...shuffDist.map(d => d.mn)]);
-                } else if (mode === 2 || mode === 5) { // MN -> RU or Picture -> RU
-                    const distractors = vocabularyData.filter(v => v.id !== item.id);
-                    const shuffDist = shuffleArray(distractors).slice(0, 3);
-                    options = shuffleArray([item.accent, ...shuffDist.map(d => d.accent)]);
-                }
-
-                quizQuestions.push({
-                    mode: mode,
-                    item: item,
-                    options: options
-                });
-            }
-        }
-
-        function initQuizUI() {
-            currentQuestionIndex = 0;
-            score = 0;
-            showScreen('quiz');
-            renderQuestion();
-        }
-
-        function renderQuestion() {
-            const q = quizQuestions[currentQuestionIndex];
-            const totalQ = quizQuestions.length;
-
-            document.getElementById('current-q-num').innerText = currentQuestionIndex + 1;
-            document.getElementById('total-q-num').innerText = totalQ;
-            document.getElementById('quiz-score').innerText = score;
-            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex) / totalQ) * 100}%`;
-
-            // Reset Elements
-            document.getElementById('feedback-box').classList.add('hidden');
-            document.getElementById('options-container').classList.add('hidden');
-            document.getElementById('text-input-container').classList.add('hidden');
-            document.getElementById('svg-image-container').classList.add('hidden');
-            document.getElementById('user-text-input').value = "";
-            
-            // Текстийг харуулах төлөв рүү шилжүүлнэ
-            document.getElementById('question-prompt-container').classList.remove('hide-question-text');
-
-            const targetEl = document.getElementById('question-target');
-            const subtextEl = document.getElementById('question-subtext');
-            const badgeEl = document.getElementById('prompt-badge');
-            const modeTitleEl = document.getElementById('quiz-mode-title');
-
-            if (q.mode === 1) { // RU -> MN
-                modeTitleEl.innerText = "1. Оросоос монгол руу";
-                badgeEl.innerText = "Орос үг";
-                targetEl.innerText = q.item.accent;
-                subtextEl.innerText = "Доорх 4 монгол хувилбараас зөв орчуулгыг сонгоно уу.";
-                renderOptions(q.options, q.item.mn);
-            } else if (q.mode === 2) { // MN -> RU
-                modeTitleEl.innerText = "2. Монголоос орос руу";
-                badgeEl.innerText = "Монгол утга";
-                targetEl.innerText = q.item.mn;
-                subtextEl.innerText = "Доорх 4 орос хувилбараас зөв үгийг сонгоно уу.";
-                renderOptions(q.options, q.item.accent);
-            } else if (q.mode === 3) { // Write MN
-                modeTitleEl.innerText = "3. Оросоос бичиж орчуулах";
-                badgeEl.innerText = "Орос үг";
-                targetEl.innerText = q.item.accent;
-                subtextEl.innerText = "Монгол орчуулгыг гараас бичиж оруулна уу.";
-                document.getElementById('text-input-container').classList.remove('hidden');
-                document.getElementById('user-text-input').focus();
-            } else if (q.mode === 4) { // Write RU
-                modeTitleEl.innerText = "4. Монголоос орос руу бичих";
-                badgeEl.innerText = "Монгол утга";
-                targetEl.innerText = q.item.mn;
-                subtextEl.innerText = "Орос үгийг өргөлтгүйгээр гараас бичиж оруулна уу.";
-                document.getElementById('text-input-container').classList.remove('hidden');
-                document.getElementById('user-text-input').focus();
-            } else if (q.mode === 5) { // Picture -> RU
-                modeTitleEl.innerText = "5. Зурагт сорилт";
-                badgeEl.innerText = "Зурагт дасгал";
-                
-                // Текстийг CSS-ээр бүрэн нууна
-                document.getElementById('question-prompt-container').classList.add('hide-question-text');
-                document.getElementById('svg-image-container').classList.remove('hidden');
-                
-                const imgEl = document.getElementById('quiz-img');
-                if (imgEl && q.item) {
-                    imgEl.classList.remove('loaded');
-                    imgEl.alt = "";
-                    
-                    imgEl.onload = function() {
-                        imgEl.classList.add('loaded');
-                    };
-                    imgEl.onerror = function() {
-                        this.onerror = null;
-                        this.src = `${q.item.img}.jpg`;
-                        this.onload = function() {
-                            imgEl.classList.add('loaded');
-                        };
-                    };
-                    imgEl.src = `${q.item.img}.png`;
-                }
-                
-                renderOptions(q.options, q.item.accent);
-            }
-        }
-
-        function renderOptions(options, correctAnswer) {
-            const container = document.getElementById('options-container');
-            container.innerHTML = "";
-            container.classList.remove('hidden');
-
-            options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = "w-full p-4 text-slate-700 bg-white hover:bg-indigo-50 border-2 border-slate-100 hover:border-indigo-300 rounded-2xl font-bold transition duration-200 text-sm sm:text-base shadow-sm btn-bounce text-center flex items-center justify-center";
-                btn.innerText = opt;
-                btn.onclick = () => checkOptionAnswer(opt, correctAnswer, btn);
-                container.appendChild(btn);
-            });
-        }
-
-        function checkOptionAnswer(selected, correct, btnElement) {
-            disableInputs();
-            const q = quizQuestions[currentQuestionIndex];
-            const isCorrect = (selected === correct);
-
-            if (isCorrect) {
-                btnElement.classList.remove('bg-white', 'border-slate-100');
-                btnElement.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600', 'shadow-md');
-                handleAnswerResult(true);
-            } else {
-                btnElement.classList.remove('bg-white', 'border-slate-100');
-                btnElement.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
-                
-                const buttons = document.querySelectorAll('#options-container button');
-                buttons.forEach(b => {
-                    if (b.innerText === correct) {
-                        b.classList.remove('bg-white', 'border-slate-100');
-                        b.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
-                    }
-                });
-                handleAnswerResult(false, `Зөв хариулт: ${correct}`);
-            }
-        }
-
-        function checkTextInputAnswer() {
-            const userInput = document.getElementById('user-text-input').value;
-            if (!userInput.trim()) return;
-
-            disableInputs();
-            const q = quizQuestions[currentQuestionIndex];
-            let isCorrect = false;
-
-            if (q.mode === 3) {
-                const cleanInput = cleanMongolianText(userInput);
-                const validOptions = [q.item.mn, ...q.item.altMn].flatMap(str => str.split(',').map(s => cleanMongolianText(s)));
-                isCorrect = validOptions.includes(cleanInput);
-            } else if (q.mode === 4) {
-                const cleanInput = cleanRussianText(userInput);
-                const cleanTarget = cleanRussianText(q.item.word);
-                isCorrect = (cleanInput === cleanTarget);
-            }
-
-            if (isCorrect) {
-                handleAnswerResult(true);
-            } else {
-                const correctDisplay = q.mode === 3 ? q.item.mn : `${q.item.word} (${q.item.accent})`;
-                handleAnswerResult(false, `Зөв хариулт: ${correctDisplay}`);
-            }
-        }
-
-        function disableInputs() {
-            const buttons = document.querySelectorAll('#options-container button');
-            buttons.forEach(b => b.disabled = true);
-            document.getElementById('user-text-input').disabled = true;
-            document.getElementById('btn-submit-text').disabled = true;
-        }
-
-        function handleAnswerResult(isCorrect, extraDetail = "") {
-            const q = quizQuestions[currentQuestionIndex];
-            const feedbackBox = document.getElementById('feedback-box');
-            const feedbackIcon = document.getElementById('feedback-icon');
-            const feedbackText = document.getElementById('feedback-text');
-            const feedbackDetail = document.getElementById('feedback-detail');
-
-            if (isCorrect) {
-                score++;
-                userStats[q.item.id].correct++;
-                feedbackBox.className = "p-4 rounded-2xl text-center bg-emerald-50 border border-emerald-200 text-emerald-900";
-                feedbackIcon.innerText = "🎉";
-                feedbackText.innerText = "Маш сайн! Зөв хариуллаа.";
-                feedbackDetail.innerText = `${q.item.accent} — ${q.item.mn}`;
-            } else {
-                userStats[q.item.id].wrong++;
-                feedbackBox.className = "p-4 rounded-2xl text-center bg-rose-50 border border-rose-200 text-rose-900";
-                feedbackIcon.innerText = "💡";
-                feedbackText.innerText = "Буруу байна!";
-                feedbackDetail.innerText = extraDetail;
-            }
-
-            saveStats();
-            document.getElementById('quiz-score').innerText = score;
-            feedbackBox.classList.remove('hidden');
-
-            document.onkeydown = function(e) {
-                if (e.key === 'Enter') {
-                    nextQuestion();
-                    document.onkeydown = null;
-                }
-            };
-        }
-
-        function nextQuestion() {
-            document.onkeydown = null;
-            document.getElementById('user-text-input').disabled = false;
-            document.getElementById('btn-submit-text').disabled = false;
-
-            currentQuestionIndex++;
-            if (currentQuestionIndex < quizQuestions.length) {
-                renderQuestion();
-            } else {
-                finishQuiz();
-            }
-        }
-
-        function finishQuiz() {
-            showScreen('result');
-            const total = quizQuestions.length;
-            const percentage = Math.round((score / total) * 100);
-
-            document.getElementById('result-percentage').innerText = `${percentage}%`;
-            document.getElementById('result-score').innerText = `${score} / ${total}`;
-
-            const msgEl = document.getElementById('result-message');
-            if (percentage === 100) {
-                msgEl.innerText = "🌟 Онцгой сайн! Нийт бүх асуултад алдаагүй зөв хариуллаа.";
-                msgEl.className = "text-sm font-bold text-emerald-700 bg-emerald-50 p-4 rounded-2xl border border-emerald-200";
-            } else if (percentage >= 80) {
-                msgEl.innerText = "👏 Баяр хүргэе! Та үгсээ маш сайн тогтоосон байна.";
-                msgEl.className = "text-sm font-bold text-indigo-700 bg-indigo-50 p-4 rounded-2xl border border-indigo-200";
-            } else if (percentage >= 50) {
-                msgEl.innerText = "👍 Муугүй! Алдаатай үгсээ 'Работа над ошибкой' цэс рүү орж дахин давтаарай.";
-                msgEl.className = "text-sm font-bold text-amber-700 bg-amber-50 p-4 rounded-2xl border border-amber-200";
-            } else {
-                msgEl.innerText = "💪 Хэрэгтэй! 'Работа над ошибкой' цэсээр дамжуулан алдаатай үгсээ дахин давтахыг зөвлөж байна.";
-                msgEl.className = "text-sm font-bold text-rose-700 bg-rose-50 p-4 rounded-2xl border border-rose-200";
-            }
-        }
-
-        function retryCurrentQuiz() {
-            if (isErrorCorrectionMode) {
-                startErrorQuiz();
-            } else {
-                startQuiz(currentQuizMode);
-            }
-        }
-
-        function renderStatsScreen() {
-            const tableBody = document.getElementById('vocab-table-body');
-            tableBody.innerHTML = "";
-
-            let totalMastered = 0;
-            let totalNeedsWork = 0;
-
-            vocabularyData.forEach(item => {
-                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
-                const isMastered = stat.correct > 0 && stat.correct > stat.wrong;
-                const isError = stat.wrong > 0 && stat.wrong >= stat.correct;
-
-                if (isMastered) totalMastered++;
-                if (isError) totalNeedsWork++;
-
-                let badgeHtml = `<span class="bg-slate-100 text-slate-500 text-xs px-2.5 py-1 rounded-full font-bold">Судалж байна</span>`;
-                if (isMastered) {
-                    badgeHtml = `<span class="bg-emerald-100 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold flex items-center justify-center gap-1">✅ Сайн мэднэ</span>`;
-                } else if (isError) {
-                    badgeHtml = `<span class="bg-amber-100 text-amber-700 text-xs px-2.5 py-1 rounded-full font-bold flex items-center justify-center gap-1">⚠️ Алдаж байна</span>`;
-                }
-
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-50/80 transition";
-                tr.innerHTML = `
-                    <td class="p-3 sm:p-4 font-bold text-slate-900">${item.word}</td>
-                    <td class="p-3 sm:p-4 font-semibold text-indigo-600">${item.accent}</td>
-                    <td class="p-3 sm:p-4 text-slate-500 font-medium">${item.gender}</td>
-                    <td class="p-3 sm:p-4 text-slate-700 font-medium">${item.mn}</td>
-                    <td class="p-3 sm:p-4 text-center font-extrabold">
-                        <span class="text-emerald-600">${stat.correct}</span> / <span class="text-rose-500">${stat.wrong}</span>
-                    </td>
-                    <td class="p-3 sm:p-4 text-center">${badgeHtml}</td>
-                `;
-                tableBody.appendChild(tr);
-            });
-
-            document.getElementById('stat-total-words').innerText = vocabularyData.length;
-            document.getElementById('stat-mastered-words').innerText = totalMastered;
-            document.getElementById('stat-error-words').innerText = totalNeedsWork;
-        }
-
-        function renderErrorMenuScreen() {
-            const container = document.getElementById('error-words-container');
-            container.innerHTML = "";
-
-            const errorItems = vocabularyData.filter(item => {
-                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
-                return stat.wrong > 0 && stat.wrong >= stat.correct;
-            });
-
-            document.getElementById('error-list-count').innerText = `${errorItems.length} үг`;
-            const btnStart = document.getElementById('btn-start-error-quiz');
-
-            if (errorItems.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-8 text-slate-400">
-                        <div class="text-4xl mb-2">🎉</div>
-                        <p class="font-bold text-sm text-slate-600">Одоогоор алдаатай үг байхгүй байна!</p>
-                        <p class="text-xs mt-1">Та бүх дасгалуудаа амжилттай хийж байна.</p>
-                    </div>
-                `;
-                btnStart.disabled = true;
-                btnStart.classList.add('opacity-50', 'cursor-not-allowed');
-            } else {
-                btnStart.disabled = false;
-                btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
-
-                errorItems.forEach(item => {
-                    const stat = userStats[item.id];
-                    const div = document.createElement('div');
-                    div.className = "flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100 text-xs sm:text-sm";
-                    div.innerHTML = `
-                        <div>
-                            <span class="font-extrabold text-slate-900">${item.accent}</span>
-                            <span class="text-slate-400 mx-1.5">•</span>
-                            <span class="text-slate-600 font-semibold">${item.mn}</span>
-                        </div>
-                        <div class="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-xl">
-                            ${stat.wrong} удаа алдсан
-                        </div>
-                    `;
-                    container.appendChild(div);
-                });
-            }
-        }
-
-        document.getElementById('user-text-input')?.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                checkTextInputAnswer();
-            }
-        });
-
-        updateErrorBadge();
-    </script>
-</body>
-</html>
+        function resetStats
