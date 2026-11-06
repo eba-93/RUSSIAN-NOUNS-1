@@ -140,8 +140,8 @@
                         <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xl mb-3 group-hover:scale-110 transition-transform">
                             🎨🖼️
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg">5. Зурагт сорилт (Pixar 3D)</h3>
-                        <p class="text-slate-500 text-xs mt-1">Pixar загварын зургийг хараад зөв орос нэрийг сонгох.</p>
+                        <h3 class="font-bold text-slate-800 text-lg">5. Зурагт сорилт</h3>
+                        <p class="text-slate-500 text-xs mt-1">Зургийг хараад зөв орос нэрийг 4 сонголтоос сонгох.</p>
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-rose-600">
                         <span>20 асуулт</span>
@@ -196,10 +196,10 @@
                     <p id="question-subtext" class="text-xs text-slate-400 mt-2 font-medium">Зөв хариултыг сонгоно уу</p>
                 </div>
 
-                <!-- Custom Uploaded Image container for Mode 5 -->
+                <!-- Custom Uploaded Image container for Mode 5 (Зураг нуудаг засвар орсон) -->
                 <div id="svg-image-container" class="hidden flex justify-center items-center py-2">
-                    <div id="svg-render-area" class="w-56 h-56 bg-slate-50 rounded-2xl border border-indigo-100 shadow-inner flex items-center justify-center p-2 overflow-hidden">
-                        <!-- Custom Image injected here -->
+                    <div id="svg-render-area" class="w-64 h-56 bg-slate-50 rounded-2xl border border-indigo-100 shadow-inner flex items-center justify-center p-2 overflow-hidden">
+                        <img id="quiz-img" src="" alt="Зураг" class="max-w-full max-h-full object-contain rounded-xl transition-opacity duration-200" style="opacity: 0;">
                     </div>
                 </div>
 
@@ -379,39 +379,38 @@
     <!-- Global App State and Script -->
     <script>
         // 1. DATA SOURCE - All 31 words from Section 1: Дом, быт, еда
-        // Таны зургийн нэрсийн дагуу шинэчилсэн жагсаалт
         const vocabularyData = [
-            { id: 1,  word: "дом",       accent: "до́м",       gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'м' үсгээр төгссөн",  mn: "гэр, байшин", altMn: ["гэр", "байшин"], img: "images/дом" },
-            { id: 2,  word: "квартира",  accent: "кварти́ра",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "орон сууц, сууц", altMn: ["орон сууц", "сууц"], img: "images/квартира" },
-            { id: 3,  word: "комната",   accent: "ко́мната",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "өрөө", altMn: ["өрөө"], img: "images/комната" },
-            { id: 4,  word: "кухня",     accent: "ку́хня",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",              mn: "гал тогоо", altMn: ["гал тогоо"], img: "images/кухня" },
-            { id: 5,  word: "балкон",    accent: "балко́н",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'н' үсгээр төгссөн",  mn: "тагт, балкон", altMn: ["тагт", "балкон"], img: "images/балкон" },
-            { id: 6,  word: "крыша",     accent: "кры́ша",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "дээвэр", altMn: ["дээвэр"], img: "images/крыша" },
+            { id: 1,  word: "дом",       accent: "до́м",       gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'м' үсгээр төгссөн", mn: "гэр, байшин", altMn: ["гэр", "байшин"], img: "images/дом" },
+            { id: 2,  word: "квартира",  accent: "кварти́ра",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орон сууц, сууц", altMn: ["орон сууц", "сууц"], img: "images/квартира" },
+            { id: 3,  word: "комната",   accent: "ко́мната",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "өрөө", altMn: ["өрөө"], img: "images/комната" },
+            { id: 4,  word: "кухня",     accent: "ку́хня",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "гал тогоо", altMn: ["гал тогоо"], img: "images/кухня" },
+            { id: 5,  word: "балкон",    accent: "балко́н",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'н' үсгээр төгссөн", mn: "тагт, балкон", altMn: ["тагт", "балкон"], img: "images/балкон" },
+            { id: 6,  word: "крыша",     accent: "кры́ша",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "дээвэр", altMn: ["дээвэр"], img: "images/крыша" },
             { id: 7,  word: "этаж",      accent: "эта́ж",      gender: "м.р.",  desc: "Эцсийн авиа нь гишгүүлэгч 'ж' үсгээр төгссөн",       mn: "давхар", altMn: ["давхар"], img: "images/этаж" },
-            { id: 8,  word: "изба",      accent: "изба́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "орос модон гэр", altMn: ["орос модон гэр", "модон гэр"], img: "images/изба" },
-            { id: 9,  word: "юрта",      accent: "ю́рта",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "монгол гэр", altMn: ["монгол гэр", "гэр"], img: "images/юрта" },
-            { id: 10, word: "палатка",   accent: "пала́тка",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "майхан", altMn: ["майхан"], img: "images/палатка" },
-            { id: 11, word: "окно",      accent: "окно́",      gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",              mn: "цонх", altMn: ["цонх"], img: "images/окно" },
+            { id: 8,  word: "изба",      accent: "изба́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орос модон гэр", altMn: ["орос модон гэр", "модон гэр"], img: "images/изба" },
+            { id: 9,  word: "юрта",      accent: "ю́рта",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "монгол гэр", altMn: ["монгол гэр", "гэр"], img: "images/юрта" },
+            { id: 10, word: "палатка",   accent: "пала́тка",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "майхан", altMn: ["майхан"], img: "images/палатка" },
+            { id: 11, word: "окно",      accent: "окно́",      gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",             mn: "цонх", altMn: ["цонх"], img: "images/окно" },
             { id: 12, word: "дверь",     accent: "две́рь",     gender: "ж.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эмэгтэй нэр үг",       mn: "хаалга", altMn: ["хаалга"], img: "images/дверь" },
-            { id: 13, word: "стол",      accent: "сто́л",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'л' үсгээр төгссөн",  mn: "ширээ", altMn: ["ширээ"], img: "images/стол" },
-            { id: 14, word: "топор",     accent: "топо́р",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'р' үсгээр төгссөн",  mn: "сүх", altMn: ["сүх"], img: "images/топор" },
-            { id: 15, word: "кастрюля",  accent: "кастрю́ля",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",              mn: "тогоо, кастрюль", altMn: ["тогоо", "кастрюль"], img: "images/кастрюля" },
-            { id: 16, word: "крупа",     accent: "крупа́",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "будаа, крупа", altMn: ["будаа", "крупа"], img: "images/крупа" },
-            { id: 17, word: "масло",     accent: "ма́сло",     gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",              mn: "тос, шар тос", altMn: ["тос", "шар тос"], img: "images/масло" },
+            { id: 13, word: "стол",      accent: "сто́л",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'л' үсгээр төгссөн", mn: "ширээ", altMn: ["ширээ"], img: "images/стол" },
+            { id: 14, word: "топор",     accent: "топо́р",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'р' үсгээр төгссөн", mn: "сүх", altMn: ["сүх"], img: "images/топор" },
+            { id: 15, word: "кастрюля", accent: "кастрю́ля", gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "тогоо, кастрюль", altMn: ["тогоо", "кастрюль"], img: "images/кастрюля" },
+            { id: 16, word: "крупа",     accent: "крупа́",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "будаа, крупа", altMn: ["будаа", "крупа"], img: "images/крупа" },
+            { id: 17, word: "масло",     accent: "ма́сло",     gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",             mn: "тос, шар тос", altMn: ["тос", "шар тос"], img: "images/масло" },
             { id: 18, word: "соль",      accent: "со́ль",      gender: "ж.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эмэгтэй нэр үг",       mn: "давс", altMn: ["давс"], img: "images/соль" },
-            { id: 19, word: "хлеб",      accent: "хле́б",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'б' үсгээр төгссөн",  mn: "талх", altMn: ["талх"], img: "images/хлеб" },
-            { id: 20, word: "ложка",     accent: "ло́жка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "халбага", altMn: ["халбага"], img: "images/ложка" },
-            { id: 21, word: "каша",      accent: "ка́ша",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "зутан, каш", altMn: ["зутан", "каш"], img: "images/каша" },
-            { id: 22, word: "бутерброд", accent: "бутербро́д", gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'д' үсгээр төгссөн",  mn: "хавчуургатай талх", altMn: ["хавчуургатай талх", "бутерброд"], img: "images/бутерброд" },
-            { id: 23, word: "шашлык",   accent: "шашлы́к",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн",  mn: "шорлог", altMn: ["шорлог"], img: "images/шашлык" },
-            { id: 24, word: "вода",      accent: "вода́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "ус", altMn: ["ус"], img: "images/вода" },
-            { id: 25, word: "подарок",   accent: "пода́рок",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн",  mn: "бэлэг", altMn: ["бэлэг"], img: "images/подарок" },
-            { id: 26, word: "кошелёк",   accent: "кошелёк",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн",  mn: "түрүүвч", altMn: ["түрүүвч"], img: "images/кошелек" },
-            { id: 27, word: "зонтик",    accent: "зо́нтик",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн",  mn: "шүхэр", altMn: ["шүхэр"], img: "images/зонтик" },
-            { id: 28, word: "пуговица",  accent: "пу́говица",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "товч", altMn: ["товч"], img: "images/пуговица" },
-            { id: 29, word: "одежда",    accent: "оде́жда",    gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "хувцас", altMn: ["хувцас"], img: "images/одежда" },
-            { id: 30, word: "шапка",     accent: "ша́пка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",              mn: "малгай", altMn: ["малгай"], img: "images/шапка" },
-            { id: 31, word: "шарф",      accent: "ша́рф",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'ф' үсгээр төгссөн",  mn: "ороолт", altMn: ["ороолт"], img: "images/шарф" }
+            { id: 19, word: "хлеб",      accent: "хле́б",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'б' үсгээр төгссөн", mn: "талх", altMn: ["талх"], img: "images/хлеб" },
+            { id: 20, word: "ложка",     accent: "ло́жка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "халбага", altMn: ["халбага"], img: "images/ложка" },
+            { id: 21, word: "каша",      accent: "ка́ша",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "зутан, каш", altMn: ["зутан", "каш"], img: "images/каша" },
+            { id: 22, word: "бутерброд", accent: "бутербро́д", gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'д' үсгээр төгссөн", mn: "хавчуургатай талх", altMn: ["хавчуургатай талх", "бутерброд"], img: "images/бутерброд" },
+            { id: 23, word: "шашлык",   accent: "шашлы́к",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "шорлог", altMn: ["шорлог"], img: "images/шашлык" },
+            { id: 24, word: "вода",      accent: "вода́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "ус", altMn: ["ус"], img: "images/вода" },
+            { id: 25, word: "подарок",   accent: "пода́рок",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "бэлэг", altMn: ["бэлэг"], img: "images/подарок" },
+            { id: 26, word: "кошелёк",   accent: "кошелёк",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "түрүүвч", altMn: ["түрүүвч"], img: "images/кошелек" },
+            { id: 27, word: "зонтик",    accent: "зо́нтик",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "шүхэр", altMn: ["шүхэр"], img: "images/зонтик" },
+            { id: 28, word: "пуговица",  accent: "пу́говица",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "товч", altMn: ["товч"], img: "images/пуговица" },
+            { id: 29, word: "одежда",    accent: "оде́жда",    gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "хувцас", altMn: ["хувцас"], img: "images/одежда" },
+            { id: 30, word: "шапка",     accent: "ша́пка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "малгай", altMn: ["малгай"], img: "images/шапка" },
+            { id: 31, word: "шарф",      accent: "ша́рф",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'ф' үсгээр төгссөн", mn: "ороолт", altMn: ["ороолт"], img: "images/шарф" }
         ];
 
         // User State Persistent LocalStorage
@@ -476,305 +475,307 @@
 
         // Screen Navigation
         function showScreen(screenId) {
-            document.querySelectorAll('main > div').forEach(div => div.classList.add('hidden'));
-            document.getElementById(`screen-${screenId}`).classList.remove('hidden');
+            document.querySelectorAll('main > div').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`screen-${screenId}`);
+            if (target) target.classList.remove('hidden');
 
             if (screenId === 'stats') {
                 renderStatsScreen();
             } else if (screenId === 'error-menu') {
                 renderErrorMenuScreen();
+            } else if (screenId === 'home') {
+                updateErrorBadge();
             }
-            updateErrorBadge();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateErrorBadge() {
-            const errorWordIds = Object.keys(userStats).filter(id => userStats[id].wrong > userStats[id].correct);
+            const errorItems = vocabularyData.filter(item => {
+                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
+                return stat.wrong > 0 && stat.wrong >= stat.correct;
+            });
             const badge = document.getElementById('error-badge');
             const homeLabel = document.getElementById('home-error-count-label');
-            if (errorWordIds.length > 0) {
-                badge.innerText = errorWordIds.length;
-                badge.classList.remove('hidden');
-                if (homeLabel) homeLabel.innerText = `Алдаатай үг: ${errorWordIds.length}`;
-            } else {
-                badge.classList.add('hidden');
-                if (homeLabel) homeLabel.innerText = `Алдаатай үг: 0`;
+            if (badge) {
+                if (errorItems.length > 0) {
+                    badge.innerText = errorItems.length;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+            if (homeLabel) {
+                homeLabel.innerText = `Алдаатай үг: ${errorItems.length}`;
             }
         }
 
-        // Start standard quiz (Modes 1-5)
+        // Quiz Generator Logic
         function startQuiz(mode) {
-            currentQuizMode = mode;
             isErrorCorrectionMode = false;
-            
-            // Randomly pick 20 questions from 31 words
-            const shuffledVocab = shuffleArray(vocabularyData);
-            quizQuestions = shuffledVocab.slice(0, 20);
-
-            setupQuizScreen();
+            currentQuizMode = mode;
+            generateQuestions(vocabularyData, 20);
+            initQuizUI();
         }
 
-        // Start Error Correction Mode ("Работа над ошибками")
         function startErrorCorrectionMode() {
             showScreen('error-menu');
         }
 
         function startErrorQuiz() {
-            // Find words where wrong > correct OR high wrong ratio
-            let errorItems = vocabularyData.filter(item => {
-                const stat = userStats[item.id];
-                return stat && (stat.wrong > stat.correct || (stat.wrong > 0 && stat.correct === 0));
+            const errorItems = vocabularyData.filter(item => {
+                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
+                return stat.wrong > 0 && stat.wrong >= stat.correct;
             });
 
             if (errorItems.length === 0) {
-                // If no error items recorded yet, pick words with lowest correct count
-                errorItems = [...vocabularyData].sort((a,b) => userStats[a.id].correct - userStats[b.id].correct).slice(0, 15);
+                alert("Танд одоогоор тогтоосон алдаатай үг байхгүй байна! Бусад дасгалуудыг ажиллаарай.");
+                return;
             }
 
-            // Shuffle and duplicate if less than 20 to ensure 20 practice questions
-            let pool = shuffleArray(errorItems);
-            while (pool.length < 20 && vocabularyData.length > 0) {
-                pool = pool.concat(shuffleArray(vocabularyData)).slice(0, 20);
-            }
-
-            quizQuestions = pool.slice(0, 20);
             isErrorCorrectionMode = true;
-            currentQuizMode = Math.floor(Math.random() * 5) + 1; // Mixed random exercise mode
-            setupQuizScreen();
+            generateQuestions(errorItems, Math.min(20, errorItems.length * 2));
+            initQuizUI();
         }
 
-        function setupQuizScreen() {
+        function generateQuestions(sourcePool, count) {
+            quizQuestions = [];
+            const shuffledPool = shuffleArray(sourcePool);
+            const numQuestions = Math.min(count, 20);
+
+            for (let i = 0; i < numQuestions; i++) {
+                const item = shuffledPool[i % shuffledPool.length];
+                let mode = currentQuizMode;
+
+                if (isErrorCorrectionMode) {
+                    // Mix modes for error correction
+                    mode = Math.floor(Math.random() * 5) + 1;
+                }
+
+                let options = [];
+                if (mode === 1) { // RU -> MN
+                    const distractors = vocabularyData.filter(v => v.id !== item.id);
+                    const shuffDist = shuffleArray(distractors).slice(0, 3);
+                    options = shuffleArray([item.mn, ...shuffDist.map(d => d.mn)]);
+                } else if (mode === 2 || mode === 5) { // MN -> RU or Picture -> RU
+                    const distractors = vocabularyData.filter(v => v.id !== item.id);
+                    const shuffDist = shuffleArray(distractors).slice(0, 3);
+                    options = shuffleArray([item.accent, ...shuffDist.map(d => d.accent)]);
+                }
+
+                quizQuestions.push({
+                    mode: mode,
+                    item: item,
+                    options: options
+                });
+            }
+        }
+
+        function initQuizUI() {
             currentQuestionIndex = 0;
             score = 0;
-            document.getElementById('quiz-score').innerText = score;
-            document.getElementById('total-q-num').innerText = quizQuestions.length;
             showScreen('quiz');
-            loadQuestion();
+            renderQuestion();
         }
 
-        function loadQuestion() {
-            const currentWord = quizQuestions[currentQuestionIndex];
-            const total = quizQuestions.length;
+        function renderQuestion() {
+            const q = quizQuestions[currentQuestionIndex];
+            const totalQ = quizQuestions.length;
 
-            // Mode Title Dynamic Header
-            const modeTitles = {
-                1: "1. Оросоос монгол руу сонгох",
-                2: "2. Монголоос орос руу сонгох",
-                3: "3. Оросоос бичиж орчуулах",
-                4: "4. Монголоос орос руу бичих",
-                5: "5. Зурагт сорилт (Pixar 3D)"
-            };
-
-            // If error correction mode, randomize exercise type for each question if preferred
-            let effectiveMode = currentQuizMode;
-            if (isErrorCorrectionMode) {
-                effectiveMode = (currentQuestionIndex % 5) + 1; // rotate through 5 modes
-            }
-
-            document.getElementById('quiz-mode-title').innerText = isErrorCorrectionMode ? `🛠️ Работа над ошибками (Горим ${effectiveMode})` : modeTitles[effectiveMode];
             document.getElementById('current-q-num').innerText = currentQuestionIndex + 1;
-            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex) / total) * 100}%`;
+            document.getElementById('total-q-num').innerText = totalQ;
+            document.getElementById('quiz-score').innerText = score;
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex) / totalQ) * 100}%`;
 
             // Reset Elements
             document.getElementById('feedback-box').classList.add('hidden');
-            document.getElementById('svg-image-container').classList.add('hidden');
-            document.getElementById('options-container').classList.remove('hidden');
+            document.getElementById('options-container').classList.add('hidden');
             document.getElementById('text-input-container').classList.add('hidden');
-            document.getElementById('options-container').innerHTML = '';
-            document.getElementById('user-text-input').value = '';
+            document.getElementById('svg-image-container').classList.add('hidden');
+            document.getElementById('user-text-input').value = "";
 
-            const promptBadge = document.getElementById('prompt-badge');
-            const targetHeader = document.getElementById('question-target');
-            const subtext = document.getElementById('question-subtext');
+            const targetEl = document.getElementById('question-target');
+            const subtextEl = document.getElementById('question-subtext');
+            const badgeEl = document.getElementById('prompt-badge');
+            const modeTitleEl = document.getElementById('quiz-mode-title');
 
-            if (effectiveMode === 1) {
-                // Russian -> Mongolian (Multiple Choice)
-                promptBadge.innerText = "Орос үг";
-                promptBadge.className = "bg-blue-50 text-blue-600 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider";
-                targetHeader.innerText = currentWord.accent;
-                subtext.innerText = `Хүйс: ${currentWord.gender} | Зөв монгол утгыг сонгоно уу`;
-                generateMultipleChoices(currentWord, 'mn');
-
-            } else if (effectiveMode === 2) {
-                // Mongolian -> Russian (Multiple Choice)
-                promptBadge.innerText = "Монгол орчуулга";
-                promptBadge.className = "bg-emerald-50 text-emerald-600 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider";
-                targetHeader.innerText = currentWord.mn;
-                subtext.innerText = "Зөв орос хувилбарыг сонгоно уу";
-                generateMultipleChoices(currentWord, 'ru');
-
-            } else if (effectiveMode === 3) {
-                // Russian -> Mongolian (Write input)
-                promptBadge.innerText = "Орос үгийг бичиж орчуулах";
-                promptBadge.className = "bg-purple-50 text-purple-600 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider";
-                targetHeader.innerText = currentWord.accent;
-                subtext.innerText = "Монгол орчуулгыг гараас шивж оруулна уу";
-                document.getElementById('options-container').classList.add('hidden');
+            if (q.mode === 1) { // RU -> MN
+                modeTitleEl.innerText = "1. Оросоос монгол руу";
+                badgeEl.innerText = "Орос үг";
+                targetEl.innerText = q.item.accent;
+                subtextEl.innerText = "Доорх 4 монгол хувилбараас зөв орчуулгыг сонгоно уу.";
+                renderOptions(q.options, q.item.mn);
+            } else if (q.mode === 2) { // MN -> RU
+                modeTitleEl.innerText = "2. Монголоос орос руу";
+                badgeEl.innerText = "Монгол утга";
+                targetEl.innerText = q.item.mn;
+                subtextEl.innerText = "Доорх 4 орос хувилбараас зөв үгийг сонгоно уу.";
+                renderOptions(q.options, q.item.accent);
+            } else if (q.mode === 3) { // Write MN
+                modeTitleEl.innerText = "3. Оросоос бичиж орчуулах";
+                badgeEl.innerText = "Орос үг";
+                targetEl.innerText = q.item.accent;
+                subtextEl.innerText = "Монгол орчуулгыг гараас бичиж оруулна уу.";
                 document.getElementById('text-input-container').classList.remove('hidden');
-
-            } else if (effectiveMode === 4) {
-                // Mongolian -> Russian (Write input)
-                promptBadge.innerText = "Орос үг бичих";
-                promptBadge.className = "bg-amber-50 text-amber-600 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider";
-                targetHeader.innerText = currentWord.mn;
-                subtext.innerText = "Орос үгийг шивж оруулна уу (Өргөлт шаардлагагүй)";
-                document.getElementById('options-container').classList.add('hidden');
+                document.getElementById('user-text-input').focus();
+            } else if (q.mode === 4) { // Write RU
+                modeTitleEl.innerText = "4. Монголоос орос руу бичих";
+                badgeEl.innerText = "Монгол утга";
+                targetEl.innerText = q.item.mn;
+                subtextEl.innerText = "Орос үгийг өргөлтгүйгээр гараас бичиж оруулна уу.";
                 document.getElementById('text-input-container').classList.remove('hidden');
-
-            } else if (effectiveMode === 5) {
-                // Picture Quiz with smart image extension fallback (.png -> .jpg -> .jpeg -> placeholder)
-                promptBadge.innerText = "Зургийг хараад нэрлэх";
-                promptBadge.className = "bg-rose-50 text-rose-600 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider";
-                targetHeader.innerText = "Зурагт юу харагдаж байна вэ?";
-                subtext.innerText = "Орос зөв нэрийг сонгоно уу";
+                document.getElementById('user-text-input').focus();
+            } else if (q.mode === 5) { // Picture -> RU
+                modeTitleEl.innerText = "5. Зурагт сорилт";
+                badgeEl.innerText = "Зурагт дасгал";
+                targetEl.innerText = "Зурагт юу харагдаж байна вэ?";
+                subtextEl.innerText = "Орос зөв нэрийг сонгоно уу";
                 
                 document.getElementById('svg-image-container').classList.remove('hidden');
                 
-                const basePath = currentWord.img;
-                const fallbackImg = `https://placehold.co/400x400/e2e8f0/475569?text=${encodeURIComponent(currentWord.word)}`;
+                // ЗУРАГ УНШИЖ ДУУСТАЛ НҮҮХ ТУСГАЙ ЗАСВАР
+                const imgEl = document.getElementById('quiz-img');
+                if (imgEl && q.item) {
+                    imgEl.style.opacity = '0';
+                    imgEl.alt = "Зураг сорилт";
+                    
+                    imgEl.src = `${q.item.img}.png`;
+                    imgEl.onload = function() {
+                        imgEl.style.opacity = '1';
+                    };
+                    imgEl.onerror = function() {
+                        this.onerror = null;
+                        this.src = `${q.item.img}.jpg`;
+                        this.onload = function() {
+                            imgEl.style.opacity = '1';
+                        };
+                    };
+                }
                 
-                // Эхлээд .png өргөтгөлтэй ачаална, хэрэв олдохгүй бол .jpg, .jpeg, хамгийн сүүлд placeholder харуулна
-                document.getElementById('svg-render-area').innerHTML = `
-                    <img src="${basePath}.png" 
-                         alt="${currentWord.word}" 
-                         onerror="if (!this.getAttribute('data-tried-jpg')) { this.setAttribute('data-tried-jpg', '1'); this.src='${basePath}.jpg'; } else if (!this.getAttribute('data-tried-jpeg')) { this.setAttribute('data-tried-jpeg', '1'); this.src='${basePath}.jpeg'; } else { this.src='${fallbackImg}'; }" 
-                         class="w-full h-full object-cover rounded-xl shadow-sm">
-                `;
-                generateMultipleChoices(currentWord, 'ru');
+                renderOptions(q.options, q.item.accent);
             }
         }
 
-        // Generate 4 options for multiple choice
-        function generateMultipleChoices(correctWord, type) {
+        function renderOptions(options, correctAnswer) {
             const container = document.getElementById('options-container');
-            container.innerHTML = '';
+            container.innerHTML = "";
+            container.classList.remove('hidden');
 
-            // Pick 3 random wrong options
-            const otherWords = vocabularyData.filter(w => w.id !== correctWord.id);
-            const shuffledOthers = shuffleArray(otherWords).slice(0, 3);
-            const choices = shuffleArray([correctWord, ...shuffledOthers]);
-
-            choices.forEach(choice => {
+            options.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = "w-full p-4 rounded-2xl border-2 border-slate-100 hover:border-indigo-500 hover:bg-indigo-50/50 text-slate-800 font-bold transition text-sm sm:text-base btn-bounce text-center shadow-sm flex items-center justify-center min-h-[56px]";
-                
-                if (type === 'mn') {
-                    btn.innerText = choice.mn;
-                } else {
-                    btn.innerText = choice.accent;
-                }
-
-                btn.onclick = () => checkChoiceAnswer(choice.id === correctWord.id, correctWord, btn);
+                btn.className = "w-full p-4 text-slate-700 bg-white hover:bg-indigo-50 border-2 border-slate-100 hover:border-indigo-300 rounded-2xl font-bold transition duration-200 text-sm sm:text-base shadow-sm btn-bounce text-center flex items-center justify-center";
+                btn.innerText = opt;
+                btn.onclick = () => checkOptionAnswer(opt, correctAnswer, btn);
                 container.appendChild(btn);
             });
         }
 
-        // Check Multiple Choice Answer
-        function checkChoiceAnswer(isCorrect, wordObj, selectedBtn) {
-            // Disable all buttons to prevent double-clicking
-            const buttons = document.querySelectorAll('#options-container button');
-            buttons.forEach(b => b.disabled = true);
-
-            recordAnswerResult(wordObj.id, isCorrect);
+        function checkOptionAnswer(selected, correct, btnElement) {
+            disableInputs();
+            const q = quizQuestions[currentQuestionIndex];
+            const isCorrect = (selected === correct);
 
             if (isCorrect) {
-                selectedBtn.className = "w-full p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500 text-white font-bold transition text-sm sm:text-base text-center shadow-md min-h-[56px]";
-                score++;
-                document.getElementById('quiz-score').innerText = score;
-                showFeedback(true, "Тийм ээ, зөв байна! 🎉", `${wordObj.accent} — ${wordObj.mn}`);
+                btnElement.classList.remove('bg-white', 'border-slate-100');
+                btnElement.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600', 'shadow-md');
+                handleAnswerResult(true);
             } else {
-                selectedBtn.className = "w-full p-4 rounded-2xl border-2 border-rose-500 bg-rose-500 text-white font-bold transition text-sm sm:text-base text-center shadow-md min-h-[56px]";
-                showFeedback(false, "Алдаатай байна ❌", `Зөв хариулт: ${wordObj.accent} — ${wordObj.mn}`);
+                btnElement.classList.remove('bg-white', 'border-slate-100');
+                btnElement.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
+                
+                // Highlight correct button
+                const buttons = document.querySelectorAll('#options-container button');
+                buttons.forEach(b => {
+                    if (b.innerText === correct) {
+                        b.classList.remove('bg-white', 'border-slate-100');
+                        b.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+                    }
+                });
+                handleAnswerResult(false, `Зөв хариулт: ${correct}`);
             }
         }
 
-        // Check Text Input Answer
         function checkTextInputAnswer() {
-            const effectiveMode = isErrorCorrectionMode ? ((currentQuestionIndex % 5) + 1) : currentQuizMode;
-            const currentWord = quizQuestions[currentQuestionIndex];
-            const inputVal = document.getElementById('user-text-input').value;
+            const userInput = document.getElementById('user-text-input').value;
+            if (!userInput.trim()) return;
 
-            if (!inputVal.trim()) return;
-
+            disableInputs();
+            const q = quizQuestions[currentQuestionIndex];
             let isCorrect = false;
 
-            if (effectiveMode === 3) {
-                // Target is Mongolian translation
-                const cleanedInput = cleanMongolianText(inputVal);
-                // Check matching main translation or any comma-separated alternative
-                const possibleAnswers = [currentWord.mn, ...currentWord.altMn];
-                isCorrect = possibleAnswers.some(ans => {
-                    const cleanAns = cleanMongolianText(ans);
-                    return cleanAns === cleanedInput || cleanedInput.includes(cleanAns) || cleanAns.includes(cleanedInput);
-                });
-
-            } else if (effectiveMode === 4) {
-                // Target is Russian word (ignore stress accents & case)
-                const cleanedInput = cleanRussianText(inputVal);
-                const targetClean = cleanRussianText(currentWord.word);
-                isCorrect = (cleanedInput === targetClean);
+            if (q.mode === 3) { // RU -> Write MN
+                const cleanInput = cleanMongolianText(userInput);
+                const validOptions = [q.item.mn, ...q.item.altMn].flatMap(str => str.split(',').map(s => cleanMongolianText(s)));
+                isCorrect = validOptions.includes(cleanInput);
+            } else if (q.mode === 4) { // MN -> Write RU
+                const cleanInput = cleanRussianText(userInput);
+                const cleanTarget = cleanRussianText(q.item.word);
+                isCorrect = (cleanInput === cleanTarget);
             }
 
-            recordAnswerResult(currentWord.id, isCorrect);
+            if (isCorrect) {
+                handleAnswerResult(true);
+            } else {
+                const correctDisplay = q.mode === 3 ? q.item.mn : `${q.item.word} (${q.item.accent})`;
+                handleAnswerResult(false, `Зөв хариулт: ${correctDisplay}`);
+            }
+        }
 
+        function disableInputs() {
+            const buttons = document.querySelectorAll('#options-container button');
+            buttons.forEach(b => b.disabled = true);
             document.getElementById('user-text-input').disabled = true;
             document.getElementById('btn-submit-text').disabled = true;
+        }
+
+        function handleAnswerResult(isCorrect, extraDetail = "") {
+            const q = quizQuestions[currentQuestionIndex];
+            const feedbackBox = document.getElementById('feedback-box');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackText = document.getElementById('feedback-text');
+            const feedbackDetail = document.getElementById('feedback-detail');
 
             if (isCorrect) {
                 score++;
-                document.getElementById('quiz-score').innerText = score;
-                showFeedback(true, "Маш сайн! Зөв бичлээ 👏", `${currentWord.accent} = ${currentWord.mn}`);
+                userStats[q.item.id].correct++;
+                feedbackBox.className = "p-4 rounded-2xl text-center bg-emerald-50 border border-emerald-200 text-emerald-900";
+                feedbackIcon.innerText = "🎉";
+                feedbackText.innerText = "Маш сайн! Зөв хариуллаа.";
+                feedbackDetail.innerText = `${q.item.accent} — ${q.item.mn}`;
             } else {
-                showFeedback(false, "Зөв хариулт биш байна ❌", `Зөв хариулт: ${currentWord.accent} — ${currentWord.mn}`);
+                userStats[q.item.id].wrong++;
+                feedbackBox.className = "p-4 rounded-2xl text-center bg-rose-50 border border-rose-200 text-rose-900";
+                feedbackIcon.innerText = "💡";
+                feedbackText.innerText = "Буруу байна!";
+                feedbackDetail.innerText = extraDetail;
             }
+
+            saveStats();
+            document.getElementById('quiz-score').innerText = score;
+            feedbackBox.classList.remove('hidden');
+
+            // Enter key support for text quiz next step
+            document.onkeydown = function(e) {
+                if (e.key === 'Enter') {
+                    nextQuestion();
+                    document.onkeydown = null;
+                }
+            };
         }
 
-        // Show feedback container
-        function showFeedback(isSuccess, title, detail) {
-            const box = document.getElementById('feedback-box');
-            box.classList.remove('hidden');
-            
-            if (isSuccess) {
-                box.className = "p-4 rounded-2xl text-center bg-emerald-50 text-emerald-800 border border-emerald-200 mt-4";
-                document.getElementById('feedback-icon').innerText = "✅";
-            } else {
-                box.className = "p-4 rounded-2xl text-center bg-rose-50 text-rose-800 border border-rose-200 mt-4";
-                document.getElementById('feedback-icon').innerText = "💡";
-            }
-            
-            document.getElementById('feedback-text').innerText = title;
-            document.getElementById('feedback-detail').innerText = detail;
-        }
-
-        // Move to Next Question or Show Results
         function nextQuestion() {
+            document.onkeydown = null;
             document.getElementById('user-text-input').disabled = false;
             document.getElementById('btn-submit-text').disabled = false;
 
             currentQuestionIndex++;
             if (currentQuestionIndex < quizQuestions.length) {
-                loadQuestion();
+                renderQuestion();
             } else {
-                showResults();
+                finishQuiz();
             }
         }
 
-        // Save individual word performance
-        function recordAnswerResult(wordId, isCorrect) {
-            if (!userStats[wordId]) {
-                userStats[wordId] = { correct: 0, wrong: 0 };
-            }
-
-            if (isCorrect) {
-                userStats[wordId].correct += 1;
-            } else {
-                userStats[wordId].wrong += 1;
-            }
-
-            saveStats();
-        }
-
-        // Show Results Screen
-        function showResults() {
+        function finishQuiz() {
             showScreen('result');
             const total = quizQuestions.length;
             const percentage = Math.round((score / total) * 100);
@@ -782,19 +783,19 @@
             document.getElementById('result-percentage').innerText = `${percentage}%`;
             document.getElementById('result-score').innerText = `${score} / ${total}`;
 
-            const msgElement = document.getElementById('result-message');
+            const msgEl = document.getElementById('result-message');
             if (percentage === 100) {
-                msgElement.innerText = "🌟 Гайхалтай! Та 100% бүх үгээ зөв хариуллаа!";
-                msgElement.className = "text-sm font-bold text-emerald-700 bg-emerald-50 p-4 rounded-2xl border border-emerald-200";
+                msgEl.innerText = "🌟 Онцгой сайн! Нийт бүх асуултад алдаагүй зөв хариуллаа.";
+                msgEl.className = "text-sm font-bold text-emerald-700 bg-emerald-50 p-4 rounded-2xl border border-emerald-200";
             } else if (percentage >= 80) {
-                msgElement.innerText = "👏 Маш сайн! Та ихэнх үгсийг сайн тогтоосон байна.";
-                msgElement.className = "text-sm font-bold text-indigo-700 bg-indigo-50 p-4 rounded-2xl border border-indigo-200";
+                msgEl.innerText = "👏 Баяр хүргэе! Та үгсээ маш сайн тогтоосон байна.";
+                msgEl.className = "text-sm font-bold text-indigo-700 bg-indigo-50 p-4 rounded-2xl border border-indigo-200";
             } else if (percentage >= 50) {
-                msgElement.innerText = "👍 Муугүй! Одоо \"Работа над ошибками\" хэсэгт орж алдаатай үгсээ бататгаарай.";
-                msgElement.className = "text-sm font-bold text-amber-700 bg-amber-50 p-4 rounded-2xl border border-amber-200";
+                msgEl.innerText = "👍 Муугүй! Алдаатай үгсээ 'Работа над ошибкой' цэс рүү орж дахин давтаарай.";
+                msgEl.className = "text-sm font-bold text-amber-700 bg-amber-50 p-4 rounded-2xl border border-amber-200";
             } else {
-                msgElement.innerText = "💪 Дахин хичээгээрэй! Үгсээ нэг бүрчлэн давтаж сайн цээжлээрэй.";
-                msgElement.className = "text-sm font-bold text-rose-700 bg-rose-50 p-4 rounded-2xl border border-rose-200";
+                msgEl.innerText = "💪 Хэрэгтэй! 'Работа над ошибкой' цэсээр дамжуулан алдаатай үгсээ дахин давтахыг зөвлөж байна.";
+                msgEl.className = "text-sm font-bold text-rose-700 bg-rose-50 p-4 rounded-2xl border border-rose-200";
             }
         }
 
@@ -806,100 +807,103 @@
             }
         }
 
-        // Render "Миний амжилт" Stats Screen
+        // Render "Миний амжилт" (Stats Screen)
         function renderStatsScreen() {
             const tableBody = document.getElementById('vocab-table-body');
-            tableBody.innerHTML = '';
+            tableBody.innerHTML = "";
 
-            let masteredCount = 0;
-            let errorCount = 0;
+            let totalMastered = 0;
+            let totalNeedsWork = 0;
 
             vocabularyData.forEach(item => {
                 const stat = userStats[item.id] || { correct: 0, wrong: 0 };
-                const isMastered = stat.correct >= 3 && stat.correct > stat.wrong * 2;
-                const isError = stat.wrong > stat.correct || (stat.wrong > 0 && stat.correct === 0);
+                const isMastered = stat.correct > 0 && stat.correct > stat.wrong;
+                const isError = stat.wrong > 0 && stat.wrong >= stat.correct;
 
-                if (isMastered) masteredCount++;
-                if (isError) errorCount++;
+                if (isMastered) totalMastered++;
+                if (isError) totalNeedsWork++;
 
-                const row = document.createElement('tr');
-                row.className = "hover:bg-slate-50 transition";
-
-                let statusBadge = `<span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full text-[11px] font-bold">Давтаж буй</span>`;
+                let badgeHtml = `<span class="bg-slate-100 text-slate-500 text-xs px-2.5 py-1 rounded-full font-bold">Судалж байна</span>`;
                 if (isMastered) {
-                    statusBadge = `<span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full text-[11px] font-bold">Сайн мэддэг ✅</span>`;
+                    badgeHtml = `<span class="bg-emerald-100 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold flex items-center justify-center gap-1">✅ Сайн мэднэ</span>`;
                 } else if (isError) {
-                    statusBadge = `<span class="bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full text-[11px] font-bold">Алдаатай ⚠️</span>`;
+                    badgeHtml = `<span class="bg-amber-100 text-amber-700 text-xs px-2.5 py-1 rounded-full font-bold flex items-center justify-center gap-1">⚠️ Алдаж байна</span>`;
                 }
 
-                row.innerHTML = `
-                    <td class="p-3 sm:p-4 font-extrabold text-slate-800">${item.word}</td>
-                    <td class="p-3 sm:p-4 font-bold text-indigo-600">${item.accent}</td>
-                    <td class="p-3 sm:p-4 text-slate-500 font-semibold">${item.gender}</td>
-                    <td class="p-3 sm:p-4 font-semibold text-slate-700">${item.mn}</td>
-                    <td class="p-3 sm:p-4 text-center font-bold">
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition";
+                tr.innerHTML = `
+                    <td class="p-3 sm:p-4 font-bold text-slate-900">${item.word}</td>
+                    <td class="p-3 sm:p-4 font-semibold text-indigo-600">${item.accent}</td>
+                    <td class="p-3 sm:p-4 text-slate-500 font-medium">${item.gender}</td>
+                    <td class="p-3 sm:p-4 text-slate-700 font-medium">${item.mn}</td>
+                    <td class="p-3 sm:p-4 text-center font-extrabold">
                         <span class="text-emerald-600">${stat.correct}</span> / <span class="text-rose-500">${stat.wrong}</span>
                     </td>
-                    <td class="p-3 sm:p-4 text-center">${statusBadge}</td>
+                    <td class="p-3 sm:p-4 text-center">${badgeHtml}</td>
                 `;
-
-                tableBody.appendChild(row);
+                tableBody.appendChild(tr);
             });
 
             document.getElementById('stat-total-words').innerText = vocabularyData.length;
-            document.getElementById('stat-mastered-words').innerText = masteredCount;
-            document.getElementById('stat-error-words').innerText = errorCount;
+            document.getElementById('stat-mastered-words').innerText = totalMastered;
+            document.getElementById('stat-error-words').innerText = totalNeedsWork;
         }
 
-        // Render "Работа над ошибками" Screen
+        // Render "Работа над ошибками" (Error Menu Screen)
         function renderErrorMenuScreen() {
             const container = document.getElementById('error-words-container');
-            container.innerHTML = '';
+            container.innerHTML = "";
 
             const errorItems = vocabularyData.filter(item => {
-                const stat = userStats[item.id];
-                return stat && (stat.wrong > stat.correct || (stat.wrong > 0 && stat.correct === 0));
+                const stat = userStats[item.id] || { correct: 0, wrong: 0 };
+                return stat.wrong > 0 && stat.wrong >= stat.correct;
             });
 
             document.getElementById('error-list-count').innerText = `${errorItems.length} үг`;
+            const btnStart = document.getElementById('btn-start-error-quiz');
 
             if (errorItems.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-8 text-slate-400">
-                        <p class="text-3xl mb-2">🎉</p>
-                        <p class="font-bold text-sm">Танд одоогоор тогтмол алдаж байгаа үг байхгүй байна!</p>
-                        <p class="text-xs mt-1">Нийт үгсийн дасгалуудыг ажиллаж мэдлэгээ туршаарай.</p>
+                        <div class="text-4xl mb-2">🎉</div>
+                        <p class="font-bold text-sm text-slate-600">Одоогоор алдаатай үг байхгүй байна!</p>
+                        <p class="text-xs mt-1">Та бүх дасгалуудаа амжилттай хийж байна.</p>
                     </div>
                 `;
-                return;
-            }
+                btnStart.disabled = true;
+                btnStart.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                btnStart.disabled = false;
+                btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
 
-            errorItems.forEach(item => {
-                const stat = userStats[item.id];
-                const card = document.createElement('div');
-                card.className = "p-3.5 rounded-xl bg-amber-50/60 border border-amber-100 flex items-center justify-between";
-                card.innerHTML = `
-                    <div>
-                        <span class="font-extrabold text-slate-800 text-sm">${item.accent}</span>
-                        <span class="text-xs text-slate-400 font-semibold ml-2">(${item.gender})</span>
-                        <p class="text-xs text-amber-900 font-bold mt-0.5">${item.mn}</p>
-                    </div>
-                    <div class="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-100">
-                        Алдаа: ${stat.wrong} удаа
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+                errorItems.forEach(item => {
+                    const stat = userStats[item.id];
+                    const div = document.createElement('div');
+                    div.className = "flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100 text-xs sm:text-sm";
+                    div.innerHTML = `
+                        <div>
+                            <span class="font-extrabold text-slate-900">${item.accent}</span>
+                            <span class="text-slate-400 mx-1.5">•</span>
+                            <span class="text-slate-600 font-semibold">${item.mn}</span>
+                        </div>
+                        <div class="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-xl">
+                            ${stat.wrong} удаа алдсан
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
         }
 
-        // Keyboard Enter Key Support for Written Input
-        document.getElementById('user-text-input').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
+        // Enter Key submit for text inputs
+        document.getElementById('user-text-input')?.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
                 checkTextInputAnswer();
             }
         });
 
-        // Initialize UI
+        // Initialize App
         updateErrorBadge();
     </script>
 </body>
