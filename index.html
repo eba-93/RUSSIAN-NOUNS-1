@@ -25,6 +25,20 @@
         .btn-bounce:active {
             transform: scale(0.96);
         }
+        /* Зурагт дасгалын үед текст нуух тусгай CSS */
+        .hide-question-text #question-target,
+        .hide-question-text #question-subtext {
+            display: none !important;
+        }
+        #quiz-img {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease-in-out;
+        }
+        #quiz-img.loaded {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col pb-12">
@@ -196,10 +210,10 @@
                     <p id="question-subtext" class="text-xs text-slate-400 mt-2 font-medium">Зөв хариултыг сонгоно уу</p>
                 </div>
 
-                <!-- Custom Uploaded Image container for Mode 5 (Зураг нуудаг засвар орсон) -->
+                <!-- Custom Uploaded Image container for Mode 5 -->
                 <div id="svg-image-container" class="hidden flex justify-center items-center py-2">
                     <div id="svg-render-area" class="w-64 h-56 bg-slate-50 rounded-2xl border border-indigo-100 shadow-inner flex items-center justify-center p-2 overflow-hidden">
-                        <img id="quiz-img" src="" alt="Зураг" class="max-w-full max-h-full object-contain rounded-xl transition-opacity duration-200" style="opacity: 0;">
+                        <img id="quiz-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
                 </div>
 
@@ -547,7 +561,6 @@
                 let mode = currentQuizMode;
 
                 if (isErrorCorrectionMode) {
-                    // Mix modes for error correction
                     mode = Math.floor(Math.random() * 5) + 1;
                 }
 
@@ -592,6 +605,9 @@
             document.getElementById('text-input-container').classList.add('hidden');
             document.getElementById('svg-image-container').classList.add('hidden');
             document.getElementById('user-text-input').value = "";
+            
+            // Текстийг харуулах төлөв рүү шилжүүлнэ
+            document.getElementById('question-prompt-container').classList.remove('hide-question-text');
 
             const targetEl = document.getElementById('question-target');
             const subtextEl = document.getElementById('question-subtext');
@@ -627,28 +643,27 @@
             } else if (q.mode === 5) { // Picture -> RU
                 modeTitleEl.innerText = "5. Зурагт сорилт";
                 badgeEl.innerText = "Зурагт дасгал";
-                targetEl.innerText = "Зурагт юу харагдаж байна вэ?";
-                subtextEl.innerText = "Орос зөв нэрийг сонгоно уу";
                 
+                // Текстийг CSS-ээр бүрэн нууна
+                document.getElementById('question-prompt-container').classList.add('hide-question-text');
                 document.getElementById('svg-image-container').classList.remove('hidden');
                 
-                // ЗУРАГ УНШИЖ ДУУСТАЛ НҮҮХ ТУСГАЙ ЗАСВАР
                 const imgEl = document.getElementById('quiz-img');
                 if (imgEl && q.item) {
-                    imgEl.style.opacity = '0';
-                    imgEl.alt = "Зураг сорилт";
+                    imgEl.classList.remove('loaded');
+                    imgEl.alt = "";
                     
-                    imgEl.src = `${q.item.img}.png`;
                     imgEl.onload = function() {
-                        imgEl.style.opacity = '1';
+                        imgEl.classList.add('loaded');
                     };
                     imgEl.onerror = function() {
                         this.onerror = null;
                         this.src = `${q.item.img}.jpg`;
                         this.onload = function() {
-                            imgEl.style.opacity = '1';
+                            imgEl.classList.add('loaded');
                         };
                     };
+                    imgEl.src = `${q.item.img}.png`;
                 }
                 
                 renderOptions(q.options, q.item.accent);
@@ -682,7 +697,6 @@
                 btnElement.classList.remove('bg-white', 'border-slate-100');
                 btnElement.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
                 
-                // Highlight correct button
                 const buttons = document.querySelectorAll('#options-container button');
                 buttons.forEach(b => {
                     if (b.innerText === correct) {
@@ -702,11 +716,11 @@
             const q = quizQuestions[currentQuestionIndex];
             let isCorrect = false;
 
-            if (q.mode === 3) { // RU -> Write MN
+            if (q.mode === 3) {
                 const cleanInput = cleanMongolianText(userInput);
                 const validOptions = [q.item.mn, ...q.item.altMn].flatMap(str => str.split(',').map(s => cleanMongolianText(s)));
                 isCorrect = validOptions.includes(cleanInput);
-            } else if (q.mode === 4) { // MN -> Write RU
+            } else if (q.mode === 4) {
                 const cleanInput = cleanRussianText(userInput);
                 const cleanTarget = cleanRussianText(q.item.word);
                 isCorrect = (cleanInput === cleanTarget);
@@ -753,7 +767,6 @@
             document.getElementById('quiz-score').innerText = score;
             feedbackBox.classList.remove('hidden');
 
-            // Enter key support for text quiz next step
             document.onkeydown = function(e) {
                 if (e.key === 'Enter') {
                     nextQuestion();
@@ -807,7 +820,6 @@
             }
         }
 
-        // Render "Миний амжилт" (Stats Screen)
         function renderStatsScreen() {
             const tableBody = document.getElementById('vocab-table-body');
             tableBody.innerHTML = "";
@@ -850,7 +862,6 @@
             document.getElementById('stat-error-words').innerText = totalNeedsWork;
         }
 
-        // Render "Работа над ошибками" (Error Menu Screen)
         function renderErrorMenuScreen() {
             const container = document.getElementById('error-words-container');
             container.innerHTML = "";
@@ -896,14 +907,12 @@
             }
         }
 
-        // Enter Key submit for text inputs
         document.getElementById('user-text-input')?.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 checkTextInputAnswer();
             }
         });
 
-        // Initialize App
         updateErrorBadge();
     </script>
 </body>
