@@ -29,15 +29,6 @@
         .hide-question-text #question-subtext {
             display: none !important;
         }
-        #quiz-img {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s ease-in-out;
-        }
-        #quiz-img.loaded {
-            opacity: 1;
-            visibility: visible;
-        }
     </style>
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col pb-12">
@@ -79,19 +70,13 @@
                     <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 font-comfortaa leading-tight">Гэр ахуй, байр сууц, хоол хүнс ба ахуйн эд зүйлс</h2>
                     <p class="text-indigo-100 mt-3 text-base sm:text-lg leading-relaxed">Нийт 31 үгээс тогтох 5 төрлийн дасгалаар өөрийн мэдлэгээ шалгаарай. Дасгал бүрт 20 санамсаргүй үг асуугдана.</p>
                 </div>
-                <div class="absolute -right-8 -bottom-10 opacity-20 pointer-events-none">
-                    <svg class="w-80 h-80 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
-                </div>
             </div>
 
             <!-- Quiz Type Selection Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Mode 1 -->
                 <div onclick="startQuiz(1)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
-                            🇷🇺➡️🇲🇳
-                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">🇷🇺➡️🇲🇳</div>
                         <h3 class="font-bold text-slate-800 text-xl">1. Оросоос монгол руу</h3>
                         <p class="text-slate-500 text-sm mt-2">Орос үгэнд тохирох зөв монгол утгыг 4 сонголтоос сонгох.</p>
                     </div>
@@ -101,12 +86,9 @@
                     </div>
                 </div>
 
-                <!-- Mode 2 -->
                 <div onclick="startQuiz(2)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
-                            🇲🇳➡️🇷🇺
-                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">🇲🇳➡️🇷🇺</div>
                         <h3 class="font-bold text-slate-800 text-xl">2. Монголоос орос руу</h3>
                         <p class="text-slate-500 text-sm mt-2">Монгол орчуулгад тохирох зөв орос үгийг 4 сонголтоос сонгох.</p>
                     </div>
@@ -116,12 +98,9 @@
                     </div>
                 </div>
 
-                <!-- Mode 3 -->
                 <div onclick="startQuiz(3)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
-                            ✍️🇲🇳
-                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">✍️🇲🇳</div>
                         <h3 class="font-bold text-slate-800 text-xl">3. Оросоос бичиж орчуулах</h3>
                         <p class="text-slate-500 text-sm mt-2">Орос үгийг хараад монгол орчуулгыг гараас бичиж оруулах.</p>
                     </div>
@@ -131,12 +110,9 @@
                     </div>
                 </div>
 
-                <!-- Mode 4 -->
                 <div onclick="startQuiz(4)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
-                            ✍️🇷🇺
-                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">✍️🇷🇺</div>
                         <h3 class="font-bold text-slate-800 text-xl">4. Монголоос орос руу бичих</h3>
                         <p class="text-slate-500 text-sm mt-2">Монгол утгад тохирох орос үгийг шивж оруулах (өргөлт шаардлагагүй).</p>
                     </div>
@@ -146,12 +122,9 @@
                     </div>
                 </div>
 
-                <!-- Mode 5 -->
                 <div onclick="startQuiz(5)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">
-                            🎨🖼️
-                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">🎨🖼️</div>
                         <h3 class="font-bold text-slate-800 text-xl">5. Зурагт сорилт</h3>
                         <p class="text-slate-500 text-sm mt-2">Зургийг хараад зөв орос нэрийг 4 сонголтоос сонгох.</p>
                     </div>
@@ -161,14 +134,11 @@
                     </div>
                 </div>
 
-                <!-- Mode Error Correction -->
                 <div onclick="startErrorCorrectionMode()" class="bg-gradient-to-br from-amber-500 to-orange-600 text-white p-6 rounded-2xl pixar-card cursor-pointer flex flex-col justify-between group shadow-lg">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold text-2xl mb-4 group-hover:rotate-12 transition-transform">
-                            🛠️
-                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold text-2xl mb-4 group-hover:rotate-12 transition-transform">🛠️</div>
                         <h3 class="font-bold text-white text-xl">Работа над ошибками</h3>
-                        <p class="text-amber-100 text-sm mt-2">Ихэвчлэн алдаж байсан үгсээр тусгайлан боловсруулсан дасгал ажиллах.</p>
+                        <p class="text-amber-100 text-sm mt-2">Алдаж байсан үгсээр тусгайлан дасгал ажиллах.</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-white/20 flex justify-between items-center text-sm font-bold text-white">
                         <span id="home-error-count-label">Алдаатай үг: 0</span>
@@ -205,6 +175,7 @@
                     <p id="question-subtext" class="text-sm text-slate-400 mt-2 font-semibold">Зөв хариултыг сонгоно уу</p>
                 </div>
 
+                <!-- GitHub images renderer (.jpg) -->
                 <div id="svg-image-container" class="hidden flex justify-center items-center py-2">
                     <div id="svg-render-area" class="w-full max-w-xl h-64 sm:h-80 bg-slate-50 rounded-3xl border border-indigo-100 shadow-inner flex items-center justify-center p-3 overflow-hidden">
                         <img id="quiz-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-2xl">
@@ -239,9 +210,7 @@
         <!-- RESULTS SCREEN -->
         <div id="screen-result" class="hidden max-w-xl mx-auto space-y-6 text-center">
             <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-xl space-y-6">
-                <div class="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-5xl shadow-inner">
-                    🏆
-                </div>
+                <div class="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-5xl shadow-inner">🏆</div>
                 <div>
                     <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">Дасгал амжилттай дууслаа!</h2>
                     <p class="text-slate-500 text-sm mt-1">Таны сорилтын үр дүн</p>
@@ -263,12 +232,8 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                    <button onclick="showScreen('home')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 rounded-xl transition text-base">
-                        Нүүр хуудас
-                    </button>
-                    <button id="btn-retry" onclick="retryCurrentQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition shadow-md shadow-indigo-200 text-base">
-                        Дахин давах 🔄
-                    </button>
+                    <button onclick="showScreen('home')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 rounded-xl transition text-base">Нүүр хуудас</button>
+                    <button onclick="retryCurrentQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition shadow-md shadow-indigo-200 text-base">Дахин давах 🔄</button>
                 </div>
             </div>
         </div>
@@ -280,9 +245,7 @@
                     <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">📊 Миний амжилт ба Статистик</h2>
                     <p class="text-sm text-slate-500 mt-1">Хэсэг 1: Дом, быт, еда (Нийт 31 үг)</p>
                 </div>
-                <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition">
-                    &larr; Буцах
-                </button>
+                <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition">&larr; Буцах</button>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -312,9 +275,7 @@
             <div class="bg-white rounded-3xl border border-slate-100 shadow-md overflow-hidden">
                 <div class="p-6 bg-slate-50/50 border-b border-slate-100 flex justify-between items-center">
                     <h3 class="font-bold text-slate-800 text-lg">Үгсийн сангийн дэлгэрэнгүй тайлан</h3>
-                    <button onclick="resetStats()" class="text-sm text-rose-500 hover:text-rose-700 font-bold">
-                        Статистик цэвэрлэх
-                    </button>
+                    <button onclick="resetStats()" class="text-sm text-rose-500 hover:text-rose-700 font-bold">Статистик цэвэрлэх</button>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm">
@@ -341,9 +302,7 @@
                     <span class="text-4xl">🛠️</span>
                     <h2 class="text-3xl font-extrabold font-comfortaa">Работа над ошибками</h2>
                 </div>
-                <p class="text-amber-100 text-sm leading-relaxed">
-                    Энэ хэсэг нь таны өмнө нь дасгал ажиллахдаа алдаж байсан үгсийг алгоритмаар тодорхойлон, тэдгээрийг сайжруулахад туслах зорилготой.
-                </p>
+                <p class="text-amber-100 text-sm leading-relaxed">Энэ хэсэг нь таны өмнө нь дасгал ажиллахдаа алдаж байсан үгсийг тодорхойлон, тэдгээрийг сайжруулахад туслах зорилготой.</p>
             </div>
 
             <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-md space-y-6">
@@ -351,12 +310,9 @@
                     <span>Сайжруулах шаардлагатай үгс</span>
                     <span id="error-list-count" class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded-full font-bold">0 үг</span>
                 </h3>
-
                 <div id="error-words-container" class="space-y-3 max-h-96 overflow-y-auto pr-2"></div>
-
                 <div class="pt-4 border-t border-slate-100">
-                    <button id="btn-start-error-quiz" onclick="startErrorQuiz()" 
-                            class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold py-4 rounded-2xl shadow-lg shadow-amber-200 transition text-base flex items-center justify-center space-x-2">
+                    <button onclick="startErrorQuiz()" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold py-4 rounded-2xl shadow-lg shadow-amber-200 transition text-base flex items-center justify-center space-x-2">
                         <span>🎯 Алдаатай үгсээр дасгал эхлүүлэх</span>
                     </button>
                 </div>
@@ -366,40 +322,44 @@
 
     <script>
         const vocabularyData = [
-            { id: 1,  word: "дом",       accent: "до́м",       gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'м' үсгээр төгссөн", mn: "гэр, байшин", altMn: ["гэр", "байшин"], img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" },
-            { id: 2,  word: "квартира",  accent: "кварти́ра",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орон сууц, сууц", altMn: ["орон сууц", "сууц"], img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" },
-            { id: 3,  word: "комната",   accent: "ко́мната",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "өрөө", altMn: ["өрөө"], img: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" },
-            { id: 4,  word: "кухня",     accent: "ку́хня",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "гал тогоо", altMn: ["гал тогоо"], img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" },
-            { id: 5,  word: "балкон",    accent: "балко́н",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'н' үсгээр төгссөн", mn: "тагт, балкон", altMn: ["тагт", "балкон"], img: "https://images.unsplash.com/photo-1596241913254-0b1a1c97a5a8?auto=format&fit=crop&w=600&q=80" },
-            { id: 6,  word: "крыша",     accent: "кры́ша",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "дээвэр", altMn: ["дээвэр"], img: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=600&q=80" },
-            { id: 7,  word: "этаж",      accent: "эта́ж",      gender: "м.р.",  desc: "Эцсийн авиа нь гишгүүлэгч 'ж' үсгээр төгссөн",       mn: "давхар", altMn: ["давхар"], img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" },
-            { id: 8,  word: "изба",      accent: "изба́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орос модон гэр", altMn: ["орос модон гэр", "модон гэр"], img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" },
-            { id: 9,  word: "юрта",      accent: "ю́рта",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "монгол гэр", altMn: ["монгол гэр", "гэр"], img: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80" },
-            { id: 10, word: "палатка",   accent: "пала́тка",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "майхан", altMn: ["майхан"], img: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80" },
-            { id: 11, word: "окно",      accent: "окно́",      gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",             mn: "цонх", altMn: ["цонх"], img: "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=600&q=80" },
-            { id: 12, word: "дверь",     accent: "две́рь",     gender: "ж.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эмэгтэй нэр үг",       mn: "хаалга", altMn: ["хаалга"], img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
-            { id: 13, word: "стол",      accent: "сто́л",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'л' үсгээр төгссөн", mn: "ширээ", altMn: ["ширээ"], img: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=600&q=80" },
-            { id: 14, word: "топор",     accent: "топо́р",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'р' үсгээр төгссөн", mn: "сүх", altMn: ["сүх"], img: "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80" },
-            { id: 15, word: "кастрюля", accent: "кастрю́ля", gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "тогоо, кастрюль", altMn: ["тогоо", "кастрюль"], img: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80" },
-            { id: 16, word: "крупа",     accent: "крупа́",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "будаа, крупа", altMn: ["будаа", "крупа"], img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80" },
-            { id: 17, word: "масло",     accent: "ма́сло",     gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",             mn: "тос, шар тос", altMn: ["тос", "шар тос"], img: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=600&q=80" },
-            { id: 18, word: "соль",      accent: "со́ль",      gender: "ж.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эмэгтэй нэр үг",       mn: "давс", altMn: ["давс"], img: "https://images.unsplash.com/photo-1518110165387-9b2f6ef308c3?auto=format&fit=crop&w=600&q=80" },
-            { id: 19, word: "хлеб",      accent: "хле́б",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'б' үсгээр төгссөн", mn: "талх", altMn: ["талх"], img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
-            { id: 20, word: "ложка",     accent: "ло́жка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "халбага", altMn: ["халбага"], img: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=600&q=80" },
-            { id: 21, word: "каша",      accent: "ка́ша",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "зутан, каш", altMn: ["зутан", "каш"], img: "https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=600&q=80" },
-            { id: 22, word: "бутерброд", accent: "бутербро́д", gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'д' үсгээр төгссөн", mn: "хавчуургатай талх", altMn: ["хавчуургатай талх", "бутерброд"], img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" },
-            { id: 23, word: "шашлык",   accent: "шашлы́к",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "шорлог", altMn: ["шорлог"], img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" },
-            { id: 24, word: "вода",      accent: "вода́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "ус", altMn: ["ус"], img: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=600&q=80" },
-            { id: 25, word: "подарок",   accent: "пода́рок",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "бэлэг", altMn: ["бэлэг"], img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80" },
-            { id: 26, word: "кошелёк",   accent: "кошелёк",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "түрүүвч", altMn: ["түрүүвч"], img: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80" },
-            { id: 27, word: "зонтик",    accent: "зо́нтик",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "шүхэр", altMn: ["шүхэр"], img: "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=600&q=80" },
-            { id: 28, word: "пуговица",  accent: "пу́говица",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "товч", altMn: ["товч"], img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80" },
-            { id: 29, word: "одежда",    accent: "оде́жда",    gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "хувцас", altMn: ["хувцас"], img: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=600&q=80" },
-            { id: 30, word: "шапка",     accent: "ша́пка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "малгай", altMn: ["малгай"], img: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=600&q=80" },
-            { id: 31, word: "шарф",      accent: "ша́рф",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'ф' үсгээр төгссөн", mn: "ороолт", altMn: ["ороолт"], img: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=600&q=80" }
+            { id: 1,  word: "дом",       accent: "до́м",       gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'м' үсгээр төгссөн", mn: "гэр, байшин", altMn: ["гэр", "байшин"], imgName: "дом" },
+            { id: 2,  word: "квартира",  accent: "кварти́ра",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орон сууц, сууц", altMn: ["орон сууц", "сууц"], imgName: "квартира" },
+            { id: 3,  word: "комната",   accent: "ко́мната",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "өрөө", altMn: ["өрөө"], imgName: "комната" },
+            { id: 4,  word: "кухня",     accent: "ку́хня",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "гал тогоо", altMn: ["гал тогоо"], imgName: "кухня" },
+            { id: 5,  word: "балкон",    accent: "балко́н",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'н' үсгээр төгссөн", mn: "тагт, балкон", altMn: ["тагт", "балкон"], imgName: "балкон" },
+            { id: 6,  word: "крыша",     accent: "кры́ша",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "дээвэр", altMn: ["дээвэр"], imgName: "крыша" },
+            { id: 7,  word: "этаж",      accent: "эта́ж",      gender: "м.р.",  desc: "Эцсийн авиа нь гишгүүлэгч 'ж' үсгээр төгссөн",       mn: "давхар", altMn: ["давхар"], imgName: "этаж" },
+            { id: 8,  word: "изба",      accent: "изба́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орос модон гэр", altMn: ["орос модон гэр", "модон гэр"], imgName: "изба" },
+            { id: 9,  word: "юрта",      accent: "ю́рта",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "монгол гэр", altMn: ["монгол гэр", "гэр"], imgName: "юрта" },
+            { id: 10, word: "палатка",   accent: "пала́тка",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "майхан", altMn: ["майхан"], imgName: "палатка" },
+            { id: 11, word: "окно",      accent: "окно́",      gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",             mn: "цонх", altMn: ["цонх"], imgName: "окно" },
+            { id: 12, word: "дверь",     accent: "две́рь",     gender: "ж.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эмэгтэй нэр үг",       mn: "хаалга", altMn: ["хаалга"], imgName: "дверь" },
+            { id: 13, word: "стол",      accent: "сто́л",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'л' үсгээр төгссөн", mn: "ширээ", altMn: ["ширээ"], imgName: "стол" },
+            { id: 14, word: "топор",     accent: "топо́р",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'р' үсгээр төгссөн", mn: "сүх", altMn: ["сүх"], imgName: "топор" },
+            { id: 15, word: "кастрюля", accent: "кастрю́ля", gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "тогоо, кастрюль", altMn: ["тогоо", "кастрюль"], imgName: "кастрюля" },
+            { id: 16, word: "крупа",     accent: "крупа́",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "будаа, крупа", altMn: ["будаа", "крупа"], imgName: "крупа" },
+            { id: 17, word: "масло",     accent: "ма́сло",     gender: "ср.р.", desc: "Эцсийн төгсгөл нь '-о' эгшгээр төгссөн",             mn: "тос, шар тос", altMn: ["тос", "шар тос"], imgName: "масло" },
+            { id: 18, word: "соль",      accent: "со́ль",      gender: "ж.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эмэгтэй нэр үг",       mn: "давс", altMn: ["давс"], imgName: "соль" },
+            { id: 19, word: "хлеб",      accent: "хле́б",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'б' үсгээр төгссөн", mn: "талх", altMn: ["талх"], imgName: "хлеб" },
+            { id: 20, word: "ложка",     accent: "ло́жка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "халбага", altMn: ["халбага"], imgName: "ложка" },
+            { id: 21, word: "каша",      accent: "ка́ша",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "зутан, каш", altMn: ["зутан", "каш"], imgName: "каша" },
+            { id: 22, word: "бутерброд", accent: "бутербро́д", gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'д' үсгээр төгссөн", mn: "хавчуургатай талх", altMn: ["хавчуургатай талх", "бутерброд"], imgName: "бутерброд" },
+            { id: 23, word: "шашлык",   accent: "шашлы́к",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "шорлог", altMn: ["шорлог"], imgName: "шашлык" },
+            { id: 24, word: "вода",      accent: "вода́",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "ус", altMn: ["ус"], imgName: "вода" },
+            { id: 25, word: "подарок",   accent: "пода́рок",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "бэлэг", altMn: ["бэлэг"], imgName: "подарок" },
+            { id: 26, word: "кошелёк",   accent: "кошелёк",   gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "түрүүвч", altMn: ["түрүүвч"], imgName: "кошелек" },
+            { id: 27, word: "зонтик",    accent: "зо́нтик",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "шүхэр", altMn: ["шүхэр"], imgName: "зонтик" },
+            { id: 28, word: "пуговица",  accent: "пу́говица",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "товч", altMn: ["товч"], imgName: "пуговица" },
+            { id: 29, word: "одежда",    accent: "оде́жда",    gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "хувцас", altMn: ["хувцас"], imgName: "одежда" },
+            { id: 30, word: "шапка",     accent: "ша́пка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "малгай", altMn: ["малгай"], imgName: "шапка" },
+            { id: 31, word: "шарф",      accent: "ша́рф",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'ф' үсгээр төгссөн", mn: "ороолт", altMn: ["ороолт"], imgName: "шарф" }
         ];
 
-        let userStats = JSON.parse(localStorage.getItem('ru_vocab_stats_v1')) || {};
+        let userStats = {};
+        try {
+            userStats = JSON.parse(localStorage.getItem('ru_vocab_stats_v1')) || {};
+        } catch(e) { userStats = {}; }
+
         vocabularyData.forEach(item => {
             if (!userStats[item.id]) {
                 userStats[item.id] = { correct: 0, wrong: 0 };
@@ -413,16 +373,14 @@
         let answered = false;
 
         function saveStats() {
-            localStorage.setItem('ru_vocab_stats_v1', JSON.stringify(userStats));
+            try { localStorage.setItem('ru_vocab_stats_v1', JSON.stringify(userStats)); } catch(e){}
             updateErrorBadge();
         }
 
         function resetStats() {
             if (confirm('Та үнэхээр бүх статистик мэдээллээ цэвэрлэх үү?')) {
                 userStats = {};
-                vocabularyData.forEach(item => {
-                    userStats[item.id] = { correct: 0, wrong: 0 };
-                });
+                vocabularyData.forEach(item => { userStats[item.id] = { correct: 0, wrong: 0 }; });
                 saveStats();
                 renderStatsScreen();
             }
@@ -434,21 +392,16 @@
             const homeLabel = document.getElementById('home-error-count-label');
             if (badge) {
                 badge.textContent = errorIds.length;
-                if (errorIds.length > 0) {
-                    badge.classList.remove('hidden');
-                } else {
-                    badge.classList.add('hidden');
-                }
+                if (errorIds.length > 0) badge.classList.remove('hidden');
+                else badge.classList.add('hidden');
             }
-            if (homeLabel) {
-                homeLabel.textContent = `Алдаатай үг: ${errorIds.length}`;
-            }
+            if (homeLabel) homeLabel.textContent = `Алдаатай үг: ${errorIds.length}`;
         }
 
         function getErrorWordIds() {
             return Object.keys(userStats).filter(id => {
                 const s = userStats[id];
-                return s.wrong > s.correct;
+                return s && s.wrong > s.correct;
             }).map(Number);
         }
 
@@ -457,11 +410,8 @@
             const target = document.getElementById(`screen-${screenId}`);
             if (target) target.classList.remove('hidden');
 
-            if (screenId === 'stats') {
-                renderStatsScreen();
-            } else if (screenId === 'error-menu') {
-                renderErrorMenuScreen();
-            }
+            if (screenId === 'stats') renderStatsScreen();
+            else if (screenId === 'error-menu') renderErrorMenuScreen();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -491,7 +441,7 @@
         function startErrorCorrectionMode() {
             const errorIds = getErrorWordIds();
             if (errorIds.length === 0) {
-                alert('Танд одоогоор засах шаардлагатай алдаатай үг байхгүй байна! Та дасгалуудаа хийж эхэлнэ үү.');
+                alert('Танд одоогоор засах шаардлагатай алдаатай үг байхгүй байна!');
                 showScreen('home');
                 return;
             }
@@ -545,9 +495,6 @@
             svgImageContainer.classList.add('hidden');
             promptContainer.classList.remove('hide-question-text');
 
-            const quizImg = document.getElementById('quiz-img');
-            quizImg.classList.remove('loaded');
-
             if (currentQuizMode === 1) {
                 document.getElementById('prompt-badge').textContent = "Орос үг";
                 document.getElementById('question-target').textContent = q.accent;
@@ -576,8 +523,9 @@
                 svgImageContainer.classList.remove('hidden');
                 promptContainer.classList.add('hide-question-text');
 
-                quizImg.onload = () => quizImg.classList.add('loaded');
-                quizImg.src = q.img;
+                // GitHub дээрх images/ хавтсан доторх .jpg зургийг нэрээр дуудах
+                const quizImg = document.getElementById('quiz-img');
+                quizImg.src = `images/${q.imgName}.jpg`;
                 quizImg.alt = q.word;
 
                 setupMultipleChoice(q, 'ru');
@@ -634,4 +582,150 @@
             let isCorrect = false;
 
             if (currentQuizMode === 3) {
-                const validAnswers = [q.mn, ...(q
+                const validAnswers = [q.mn, ...(q.altMn || [])].map(a => a.toLowerCase().trim());
+                isCorrect = validAnswers.some(ans => ans.includes(val) || val.includes(ans));
+            } else if (currentQuizMode === 4) {
+                const cleanWord = q.word.toLowerCase().replace(/́/g, '');
+                isCorrect = val === cleanWord;
+            }
+
+            showFeedback(isCorrect, q);
+        }
+
+        function showFeedback(isCorrect, q) {
+            const feedbackBox = document.getElementById('feedback-box');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackText = document.getElementById('feedback-text');
+            const feedbackDetail = document.getElementById('feedback-detail');
+
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'bg-rose-50', 'text-emerald-900', 'text-rose-900', 'border-emerald-200', 'border-rose-200');
+
+            if (!userStats[q.id]) userStats[q.id] = { correct: 0, wrong: 0 };
+
+            if (isCorrect) {
+                score += 1;
+                userStats[q.id].correct += 1;
+                feedbackBox.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200');
+                feedbackIcon.textContent = "🎉";
+                feedbackText.textContent = "Зөв байна!";
+                feedbackDetail.textContent = `${q.accent} — ${q.mn} (${q.desc})`;
+            } else {
+                userStats[q.id].wrong += 1;
+                feedbackBox.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-200');
+                feedbackIcon.textContent = "❌";
+                feedbackText.textContent = "Буруу байна!";
+                feedbackDetail.textContent = `Зөв хариулт: ${q.accent} — ${q.mn}`;
+            }
+
+            saveStats();
+            document.getElementById('quiz-score').textContent = score;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            showScreen('result');
+            const total = quizQuestions.length;
+            const pct = Math.round((score / total) * 100);
+
+            document.getElementById('result-percentage').textContent = `${pct}%`;
+            document.getElementById('result-score').textContent = `${score} / ${total}`;
+
+            const msg = document.getElementById('result-message');
+            if (pct >= 90) {
+                msg.textContent = "Онцгой сайн! Та энэ хэсгийн үгсийг маш сайн эзэмшжээ. 🌟";
+            } else if (pct >= 70) {
+                msg.textContent = "Баяр хүргэе! Та амжилттай сайн ажиллалаа. 👍";
+            } else {
+                msg.textContent = "Цаашид засаж сайжруулах зүйл байна. 💪";
+            }
+        }
+
+        function renderStatsScreen() {
+            const body = document.getElementById('vocab-table-body');
+            body.innerHTML = '';
+
+            let mastered = 0;
+            let errors = 0;
+
+            vocabularyData.forEach(item => {
+                const s = userStats[item.id] || { correct: 0, wrong: 0 };
+                const isMastered = s.correct >= 3 && s.correct > s.wrong;
+                const isError = s.wrong > s.correct;
+
+                if (isMastered) mastered++;
+                if (isError) errors++;
+
+                let badge = '<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500">Эхлээгүй</span>';
+                if (isMastered) {
+                    badge = '<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">✅ Тогтоосон</span>';
+                } else if (isError) {
+                    badge = '<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">⚠️ Алдаатай</span>';
+                } else if (s.correct > 0 || s.wrong > 0) {
+                    badge = '<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">🔄 Сурч байгаа</span>';
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition";
+                tr.innerHTML = `
+                    <td class="p-4 font-bold text-slate-800">${item.word}</td>
+                    <td class="p-4 font-bold text-indigo-600 font-comfortaa">${item.accent}</td>
+                    <td class="p-4 text-xs font-semibold text-slate-400">${item.gender}</td>
+                    <td class="p-4 font-semibold text-slate-700">${item.mn}</td>
+                    <td class="p-4 text-center font-bold">
+                        <span class="text-emerald-600">${s.correct}</span> / <span class="text-rose-500">${s.wrong}</span>
+                    </td>
+                    <td class="p-4 text-center">${badge}</td>
+                `;
+                body.appendChild(tr);
+            });
+
+            document.getElementById('stat-total-words').textContent = vocabularyData.length;
+            document.getElementById('stat-mastered-words').textContent = mastered;
+            document.getElementById('stat-error-words').textContent = errors;
+        }
+
+        function renderErrorMenuScreen() {
+            const container = document.getElementById('error-words-container');
+            container.innerHTML = '';
+
+            const errorIds = getErrorWordIds();
+            document.getElementById('error-list-count').textContent = `${errorIds.length} үг`;
+
+            errorIds.forEach(id => {
+                const item = vocabularyData.find(v => v.id === id);
+                if (!item) return;
+                const s = userStats[id];
+
+                const div = document.createElement('div');
+                div.className = "p-4 rounded-2xl bg-amber-50/60 border border-amber-200 flex justify-between items-center";
+                div.innerHTML = `
+                    <div>
+                        <span class="font-bold text-lg text-slate-900 font-comfortaa">${item.accent}</span>
+                        <span class="text-slate-500 text-sm ml-2">(${item.mn})</span>
+                    </div>
+                    <div class="text-sm font-bold text-rose-600">
+                        Алдаа: ${s.wrong} удаа
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        updateErrorBadge();
+
+        document.getElementById('user-text-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkTextInputAnswer();
+            }
+        });
+    </script>
+</body>
+</html>
