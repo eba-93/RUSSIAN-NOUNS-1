@@ -29,6 +29,20 @@
         .hide-question-text #question-subtext {
             display: none !important;
         }
+
+        /* Нүүр хуудасны цэсийн картуудын текстийг голлуулах */
+        #screen-home .pixar-card {
+            text-align: center;
+        }
+        #screen-home .pixar-card > div:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #screen-home .pixar-card > div:last-child {
+            justify-content: center;
+            gap: 1.5rem;
+        }
     </style>
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col pb-12">
@@ -76,7 +90,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div onclick="startQuiz(1)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">🇷🇺➡️🇲🇳</div>
+                        <div class="h-14 px-4 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center gap-2.5 font-bold text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <img src="https://flagcdn.com/w80/ru.png" alt="Россия" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                            <span>→</span>
+                            <img src="https://flagcdn.com/w80/mn.png" alt="Монгол" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                        </div>
                         <h3 class="font-bold text-slate-800 text-xl">1. Перевести с русского на монгольский язык</h3>
                         <p class="text-slate-500 text-sm mt-2">Выберите правильный перевод.</p>
                     </div>
@@ -88,7 +106,11 @@
 
                 <div onclick="startQuiz(2)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">🇲🇳➡️🇷🇺</div>
+                        <div class="h-14 px-4 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center gap-2.5 font-bold text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <img src="https://flagcdn.com/w80/mn.png" alt="Монгол" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                            <span>→</span>
+                            <img src="https://flagcdn.com/w80/ru.png" alt="Россия" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                        </div>
                         <h3 class="font-bold text-slate-800 text-xl">2. Перевести с монгольского на русский язык</h3>
                         <p class="text-slate-500 text-sm mt-2">Выберите правильный перевод.</p>
                     </div>
@@ -100,7 +122,9 @@
 
                 <div onclick="startQuiz(3)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">✍️🇲🇳</div>
+                        <div class="h-14 px-4 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <img src="https://flagcdn.com/w80/mn.png" alt="Монгол" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                        </div>
                         <h3 class="font-bold text-slate-800 text-xl">3. Оросоос бичиж орчуулах</h3>
                         <p class="text-slate-500 text-sm mt-2">Выберите правильный перевод.</p>
                     </div>
@@ -112,7 +136,9 @@
 
                 <div onclick="startQuiz(4)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">✍️🇷🇺</div>
+                        <div class="h-14 px-4 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <img src="https://flagcdn.com/w80/ru.png" alt="Россия" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                        </div>
                         <h3 class="font-bold text-slate-800 text-xl">4. Монголоос орос руу бичих</h3>
                         <p class="text-slate-500 text-sm mt-2">Монгол утгад тохирох орос үгийг шивж оруулах (өргөлт шаардлагагүй).</p>
                     </div>
@@ -124,7 +150,25 @@
 
                 <div onclick="startQuiz(5)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition-transform">🎨🖼️</div>
+                        <div class="h-20 px-5 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg viewBox="-5 0 270 125" class="h-16 w-auto" role="img" aria-label="Оросын газрын зураг ба томруулдаг шил" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <path id="ru-map" stroke-linejoin="round" d="M14.25 31.5 L21 31.8 L33 37.5 L33 42 L37.5 34.5 L51 34.5 L61.5 33 L73.5 24 L81 21 L91.5 21 L102 15 L121.5 7.5 L127.5 7 L141 18 L166.5 24 L181.5 22.5 L196.5 27 L211.5 31.5 L226.5 30 L241.5 33 L256.5 42 L256.5 45 L241.5 46.5 L238.5 52.5 L226.5 60 L217.5 60 L216 69 L211.5 78 L207 87 L205.5 81 L204.75 72 L205.5 66 L198 61.5 L186 63 L177 78 L183 81 L181.5 96 L174 109.5 L168 111.6 L168 105 L172.5 96 L162 90 L151.5 81 L147 90 L133.5 90 L118.5 85.5 L103.5 93 L91.5 87 L76.5 75 L63 87 L46.5 85.5 L42 90 L42 102 L43.5 114 L31.5 109.5 L27.75 105 L28.5 99 L31.5 93 L24 84 L19.5 84 L18.75 79.5 L16.5 72 L13.5 72 L12.75 66 L13.5 61.5 L13.5 58.5 L16.5 54 L16.5 45 L15 31.5 Z"/>
+                                    <clipPath id="ru-lens"><circle cx="130" cy="55" r="32"/></clipPath>
+                                </defs>
+                                <!-- Оросын газрын зураг -->
+                                <use href="#ru-map" fill="#fda4af" stroke="#e11d48" stroke-width="2"/>
+                                <!-- Шилний доторх томруулсан зураг -->
+                                <g clip-path="url(#ru-lens)">
+                                    <rect x="90" y="15" width="80" height="80" fill="#fff1f2"/>
+                                    <use href="#ru-map" transform="translate(130 55) scale(2) translate(-130 -55)" fill="#fb7185" stroke="#e11d48" stroke-width="1"/>
+                                </g>
+                                <!-- Томруулдаг шил -->
+                                <line x1="153" y1="78" x2="190" y2="115" stroke="#475569" stroke-width="11" stroke-linecap="round"/>
+                                <circle cx="130" cy="55" r="32" fill="none" stroke="#475569" stroke-width="7"/>
+                                <path d="M110 42 A24 24 0 0 1 124 31" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+                            </svg>
+                        </div>
                         <h3 class="font-bold text-slate-800 text-xl">5. Работа с картинкой</h3>
                         <p class="text-slate-500 text-sm mt-2">Зургийг хараад зөв орос нэрийг 4 сонголтоос сонгох.</p>
                     </div>
@@ -585,7 +629,7 @@
                 const validAnswers = [q.mn, ...(q.altMn || [])].map(a => a.toLowerCase().trim());
                 isCorrect = validAnswers.some(ans => ans.includes(val) || val.includes(ans));
             } else if (currentQuizMode === 4) {
-                const cleanWord = q.word.toLowerCase().replace(/́/g, '');
+                const cleanWord = q.word.toLowerCase().replace(/\u0301/g, '');
                 isCorrect = val === cleanWord;
             }
 
