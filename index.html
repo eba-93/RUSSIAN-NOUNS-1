@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ҮГ ХЭН САЙН ЦЭЭЖЛЭНЭ-ТЭР ХҮН АМЖИЛТ ГАРГАНА!</title>
+    <title>Орос хэлний сорил - Дом, быт, еда</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -28,6 +28,11 @@
         .hide-question-text #question-target,
         .hide-question-text #question-subtext {
             display: none !important;
+        }
+
+        /* Компьютерийн дэлгэц дээр сайтыг бага зэрэг томруулах */
+        @media (min-width: 1024px) {
+            html { font-size: 18px; }
         }
 
         /* Нүүр хуудасны цэсийн картуудын текстийг голлуулах */
@@ -57,9 +62,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="font-bold font-comfortaa text-xl text-indigo-950">Орос хэлний сорилт</h1>
-                    <p class="text-xs text-indigo-500 font-semibold">1-р хэсэг: Дом, быт, еда</p>
-                </div>
+                    <h1 class="font-bold font-comfortaa text-xl text-indigo-950">УЧИМ СЛОВА</h1>                </div>
             </div>
 
             <!-- Stats Bar -->
@@ -79,10 +82,9 @@
         <!-- HOME SCREEN -->
         <div id="screen-home" class="space-y-8">
             <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-700 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
-                <div class="relative z-10 max-w-2xl">
+                <div class="relative z-10 max-w-3xl mx-auto text-center">
                     <span class="bg-white/20 text-indigo-100 text-xs px-3.5 py-1.5 rounded-full font-bold uppercase tracking-wider">Олимпиадын бэлтгэл</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 font-comfortaa leading-tight">Гэр ахуй, байр сууц, хоол хүнс ба ахуйн эд зүйлс</h2>
-                    <p class="text-indigo-100 mt-3 text-base sm:text-lg leading-relaxed">Нийт 31 үгээс тогтох 5 төрлийн дасгалаар өөрийн мэдлэгээ шалгаарай. Дасгал бүрт 20 санамсаргүй үг асуугдана.</p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 font-comfortaa leading-tight">ҮГ ХЭН САЙН ЦЭЭЖЛЭНЭ<br>ТЭР ХҮН ИЛҮҮ АМЖИЛТ ГАРГАНА!</h2>
                 </div>
             </div>
 
@@ -125,7 +127,7 @@
                         <div class="h-14 px-4 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                             <img src="https://flagcdn.com/w80/mn.png" alt="Монгол" class="h-8 w-auto rounded shadow-sm border border-slate-200">
                         </div>
-                        <h3 class="font-bold text-slate-800 text-xl">3. Оросоос бичиж орчуулах</h3>
+                        <h3 class="font-bold text-slate-800 text-xl">3. Перевод на русский язык</h3>
                         <p class="text-slate-500 text-sm mt-2">Выберите правильный перевод.</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-purple-600">
@@ -139,12 +141,12 @@
                         <div class="h-14 px-4 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                             <img src="https://flagcdn.com/w80/ru.png" alt="Россия" class="h-8 w-auto rounded shadow-sm border border-slate-200">
                         </div>
-                        <h3 class="font-bold text-slate-800 text-xl">4. Монголоос орос руу бичих</h3>
-                        <p class="text-slate-500 text-sm mt-2">Монгол утгад тохирох орос үгийг шивж оруулах (өргөлт шаардлагагүй).</p>
+                        <h3 class="font-bold text-slate-800 text-xl">4. Перевод на монгольский язык</h3>
+                        <p class="text-slate-500 text-sm mt-2">Выберите правильный перевод</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-amber-600">
-                        <span>20 асуулт</span>
-                        <span>Эхлэх &rarr;</span>
+                        <span>20 тестов</span>
+                        <span>Старт &rarr;</span>
                     </div>
                 </div>
 
@@ -170,10 +172,10 @@
                             </svg>
                         </div>
                         <h3 class="font-bold text-slate-800 text-xl">5. Работа с картинкой</h3>
-                        <p class="text-slate-500 text-sm mt-2">Зургийг хараад зөв орос нэрийг 4 сонголтоос сонгох.</p>
+                        <p class="text-slate-500 text-sm mt-2">Выберите правильный вариант</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-rose-600">
-                        <span>20 асуулт</span>
+                        <span>20 тестов</span>
                         <span>Старт &rarr;</span>
                     </div>
                 </div>
