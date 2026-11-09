@@ -204,6 +204,18 @@
                     </div>
                 </div>
 
+                <div onclick="startQuiz(8)" class="sm:col-span-2 lg:col-span-3 bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                    <div>
+                        <div class="h-14 px-4 rounded-2xl bg-fuchsia-100 text-fuchsia-700 flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">✍️ новая · изба</div>
+                        <h3 class="font-bold text-slate-800 text-xl">8. Нэр үг, тэмдэг нэрийн зохицол (бичвэрээр)</h3>
+                        <p class="text-slate-500 text-sm mt-2">Напишите прилагательное в нужной форме (по роду существительного).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-fuchsia-600">
+                        <span>20 тестов</span>
+                        <span>Старт &rarr;</span>
+                    </div>
+                </div>
+
                 <div onclick="startErrorCorrectionMode()" class="sm:col-span-2 lg:col-span-3 bg-gradient-to-br from-amber-500 to-orange-600 text-white p-6 rounded-2xl pixar-card cursor-pointer flex flex-col justify-between group shadow-lg">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold text-2xl mb-4 group-hover:rotate-12 transition-transform">🛠️</div>
@@ -645,7 +657,7 @@
             currentQuestionIndex = 0;
 
             let pool = vocabularyData;
-            if (mode === 6 || mode === 7) {
+            if (mode === 6 || mode === 7 || mode === 8) {
                 // Род болон зохицлын дасгал зөвхөн нэр үгээр
                 pool = vocabularyData.filter(v => v.pos === 'noun');
             }
@@ -710,7 +722,8 @@
                 4: "4. Перевод на русский",
                 5: "5. Работа с картинкой",
                 6: "6. Род существительных",
-                7: "7. Нэр үг болон тэмдэг нэрийн зохицол"
+                7: "7. Нэр үг болон тэмдэг нэрийн зохицол",
+                8: "8. Зохицол (бичвэрээр)"
             };
             document.getElementById('quiz-mode-title').textContent = titleMap[currentQuizMode] || "Тест";
 
@@ -725,6 +738,7 @@
             textInputContainer.classList.add('hidden');
             svgImageContainer.classList.add('hidden');
             promptContainer.classList.remove('hide-question-text');
+            document.getElementById('user-text-input').placeholder = "Введите ответ здесь";
 
             if (currentQuizMode === 1) {
                 document.getElementById('prompt-badge').textContent = "Орос үг";
@@ -755,6 +769,14 @@
                 document.getElementById('question-target').textContent = q.accent;
                 document.getElementById('question-subtext').textContent = "Выберите род";
                 setupGenderChoice(q);
+            } else if (currentQuizMode === 8) {
+                document.getElementById('prompt-badge').textContent = "Существительное";
+                setupAgreementText(q);
+                textInputContainer.classList.remove('hidden');
+                const inp = document.getElementById('user-text-input');
+                inp.value = '';
+                inp.placeholder = "Введите форму прилагательного";
+                inp.focus();
             } else if (currentQuizMode === 7) {
                 document.getElementById('prompt-badge').textContent = "Существительное";
                 document.getElementById('question-subtext').textContent = "Выберите правильную форму прилагательного";
@@ -778,8 +800,13 @@
             optionsContainer.innerHTML = '';
 
             // Утга нь давхцах (гостиница/отель, больница/поликлиника, дом/юрта гэх мэт) үгсийг алдаатай сонголтоос хасна
-            let distractors = vocabularyData.filter(v => !overlapsMeaning(v, correctItem));
-            distractors = shuffle(distractors).slice(0, 3);
+            // Нэг ижил орчуулгатай хоёр үг (гостиница/отель) хоёулаа сонголтонд орохгүй байх
+            let distractors = [];
+            for (const v of shuffle(vocabularyData.filter(v => !overlapsMeaning(v, correctItem)))) {
+                if (distractors.some(d => d.mn === v.mn)) continue;
+                distractors.push(v);
+                if (distractors.length === 3) break;
+            }
             let options = shuffle([correctItem, ...distractors]);
 
             options.forEach(opt => {
@@ -808,8 +835,95 @@
         // ---------- 7-р дасгал: нэр үг + тэмдэг нэрийн зохицол ----------
         let currentAgreement = null;
 
+        // Нэр үг бүртэй утгаар БОДИТ тохирдог тэмдэг нэрсийн жагсаалт (эрэгтэй хэлбэрээр).
+        // 7, 8-р дасгал зөвхөн эндээс сонгоно.
+        const nounAdjectives = {
+            1: "большой маленький новый старый красивый высокий уютный тёплый холодный удобный дорогой дешёвый гостеприимный хороший плохой прекрасный простой",
+            2: "большой маленький новый старый красивый уютный удобный тёплый холодный дорогой дешёвый хороший плохой прекрасный",
+            3: "большой маленький новый старый красивый уютный удобный тёплый холодный длинный хороший плохой прекрасный",
+            4: "большой маленький новый старый красивый уютный удобный тёплый холодный хороший плохой прекрасный",
+            5: "большой маленький новый старый красивый удобный уютный длинный хороший плохой прекрасный",
+            6: "высокий низкий новый старый красивый большой маленький хороший плохой",
+            7: "высокий низкий хороший плохой удобный",
+            8: "большой маленький новый старый красивый уютный тёплый холодный удобный хороший плохой прекрасный",
+            9: "большой маленький новый старый красивый уютный тёплый холодный удобный хороший плохой прекрасный",
+            10: "большой маленький новый старый красивый удобный тёплый холодный лёгкий хороший плохой дорогой дешёвый простой",
+            11: "большой маленький новый старый красивый высокий хороший плохой дорогой дешёвый прекрасный",
+            12: "большой маленький новый старый красивый высокий низкий хороший плохой дорогой дешёвый прекрасный простой",
+            13: "большой маленький новый старый красивый удобный высокий низкий длинный дорогой дешёвый хороший плохой простой прекрасный лёгкий",
+            14: "большой маленький новый старый хороший плохой дорогой дешёвый простой лёгкий удобный",
+            15: "большой маленький новый старый хороший плохой дорогой дешёвый простой лёгкий удобный красивый",
+            16: "хороший плохой дорогой дешёвый",
+            17: "хороший плохой дорогой дешёвый холодный тёплый",
+            18: "хороший плохой дорогой дешёвый простой",
+            19: "хороший плохой дорогой дешёвый тёплый холодный старый большой маленький простой прекрасный",
+            20: "большой маленький новый старый красивый удобный длинный короткий хороший плохой дорогой дешёвый лёгкий простой",
+            21: "хороший плохой тёплый холодный простой лёгкий",
+            22: "большой маленький хороший плохой простой лёгкий дорогой дешёвый тёплый холодный",
+            23: "хороший плохой дорогой дешёвый тёплый холодный",
+            24: "холодный тёплый хороший плохой",
+            25: "большой маленький новый красивый хороший плохой дорогой дешёвый прекрасный простой",
+            26: "большой маленький новый старый красивый дорогой дешёвый хороший плохой удобный простой",
+            27: "большой маленький новый старый красивый дорогой дешёвый хороший плохой удобный лёгкий простой",
+            28: "большой маленький новый старый красивый дорогой дешёвый хороший плохой простой",
+            29: "новый старый красивый тёплый лёгкий дорогой дешёвый хороший плохой удобный простой",
+            30: "большой маленький новый старый красивый тёплый лёгкий дорогой дешёвый хороший плохой удобный простой",
+            31: "длинный короткий большой маленький новый старый красивый тёплый лёгкий дорогой дешёвый хороший плохой удобный простой",
+            32: "большой маленький новый старый хороший плохой дорогой дешёвый удобный",
+            33: "большой маленький новый старый красивый хороший плохой удобный",
+            34: "большой маленький новый старый красивый уютный хороший плохой прекрасный удобный",
+            35: "большой маленький новый старый хороший плохой дорогой удобный",
+            36: "большой маленький новый старый красивый прекрасный дорогой холодный тёплый гостеприимный весёлый хороший плохой",
+            37: "большой маленький новый старый красивый уютный удобный дорогой дешёвый хороший плохой гостеприимный прекрасный",
+            38: "большой маленький новый старый красивый прекрасный гостеприимный весёлый хороший плохой уютный",
+            39: "большой маленький новый старый хороший плохой серьёзный прекрасный",
+            40: "большой маленький новый старый красивый уютный удобный дорогой дешёвый хороший плохой прекрасный весёлый гостеприимный",
+            41: "большой маленький новый старый красивый удобный дорогой дешёвый хороший плохой прекрасный",
+            42: "большой новый старый красивый удобный хороший плохой",
+            43: "большой красивый прекрасный дорогой холодный гостеприимный весёлый жизнерадостный хороший",
+            44: "большой маленький новый старый красивый прекрасный хороший плохой серьёзный",
+            45: "большой маленький новый старый красивый уютный удобный дорогой дешёвый хороший плохой гостеприимный прекрасный высокий",
+            46: "большой маленький новый старый красивый прекрасный хороший плохой уютный весёлый",
+            47: "большой маленький новый старый удобный дорогой дешёвый хороший плохой",
+            48: "красивый прекрасный большой старый холодный дорогой гостеприимный весёлый жизнерадостный хороший",
+            49: "большой маленький новый старый хороший плохой удобный",
+            50: "длинный большой красивый прекрасный новый старый хороший плохой",
+            51: "большой маленький новый старый красивый уютный удобный дорогой дешёвый хороший плохой прекрасный гостеприимный весёлый",
+            52: "большой маленький красивый прекрасный дорогой добрый счастливый гостеприимный хороший",
+            53: "большой красивый прекрасный холодный гостеприимный добрый счастливый хороший",
+            54: "большой маленький новый старый дорогой дешёвый хороший плохой удобный",
+            55: "большой маленький новый старый красивый прекрасный хороший плохой уютный",
+            56: "большой маленький новый старый красивый удобный хороший плохой",
+            57: "большой маленький красивый прекрасный старый новый дорогой холодный гостеприимный весёлый жизнерадостный хороший",
+            58: "большой маленький красивый прекрасный холодный тёплый дорогой гостеприимный добрый счастливый хороший плохой",
+            59: "большой маленький новый старый красивый прекрасный хороший плохой серьёзный весёлый уютный",
+            60: "длинный короткий большой маленький красивый новый старый хороший плохой прекрасный",
+            61: "большой маленький новый старый красивый хороший плохой серьёзный прекрасный",
+            62: "большой маленький новый старый красивый хороший плохой прекрасный серьёзный"
+        };
+
+        function getAgreementAdjectives(noun, adjs) {
+            const allowed = (nounAdjectives[noun.id] || "").split(" ");
+            return adjs.filter(a => allowed.includes(a.word));
+        }
+
         function hasCat(set, cats) {
             return cats.split('').some(c => set.includes(c));
+        }
+
+        // 8-р дасгал: утгаар тохирох тэмдэг нэрийг сонгоод, зөв хэлбэрийг бичүүлнэ
+        function setupAgreementText(noun) {
+            const cats = nounCats[noun.id] || '';
+            const key = { "м.р.": "m", "ж.р.": "f", "ср.р.": "n" }[noun.gender] || "m";
+            const adjs = vocabularyData.filter(v => v.pos === 'adj');
+            const natAll = getAgreementAdjectives(noun, adjs);
+            const specific = natAll.filter(a => !a.universal);
+            const source = (specific.length && Math.random() < 0.65) ? specific : natAll;
+            const correct = source[Math.floor(Math.random() * source.length)];
+
+            currentAgreement = { noun, correct, key };
+            document.getElementById('question-target').textContent = noun.accent;
+            document.getElementById('question-subtext').innerHTML = `Напишите прилагательное <span class="text-slate-900 font-black text-2xl align-middle">«${correct.accent}»</span> в нужной форме`;
         }
 
         function setupAgreementChoice(noun) {
@@ -822,7 +936,7 @@
             const adjs = vocabularyData.filter(v => v.pos === 'adj');
 
             // Утгаар тохирох тэмдэг нэрсээс нэгийг санамсаргүй сонгоно (өвөрмөц нэрсийг илүү оноож)
-            const natAll = adjs.filter(a => hasCat(a.nat, cats));
+            const natAll = getAgreementAdjectives(noun, adjs);
             const specific = natAll.filter(a => !a.universal);
             const source = (specific.length && Math.random() < 0.65) ? specific : natAll;
             const correct = source[Math.floor(Math.random() * source.length)];
@@ -831,7 +945,7 @@
 
             // Дээд хэсэгт зөвхөн нэр үг, тэмдэг нэрийг (толь бичгийн хэлбэрээр) заавар дотор харуулна
             document.getElementById('question-target').textContent = noun.accent;
-            document.getElementById('question-subtext').textContent = `Выберите форму прилагательного «${correct.accent}»`;
+            document.getElementById('question-subtext').innerHTML = `Выберите форму прилагательного <span class="text-slate-900 font-black text-2xl align-middle">«${correct.accent}»</span>`;
 
             // Нэг тэмдэг нэрийн 4 хэлбэр: эр, эм, саармаг, олон тоо
             const formOptions = [
@@ -928,6 +1042,19 @@
             answered = true;
             const q = quizQuestions[currentQuestionIndex];
             let isCorrect = false;
+
+            if (currentQuizMode === 8) {
+                const norm = s => s.toLowerCase().replace(/́/g, '').replace(/ё/g, 'е').replace(/\s+/g, ' ').trim();
+                const { noun, correct, key } = currentAgreement;
+                const form = correct.forms[key];
+                const typed = norm(val);
+                isCorrect = typed === norm(form) || typed === norm(`${form} ${noun.word}`);
+                const phrase = `${form} ${noun.word}`;
+                showFeedback(isCorrect, noun, isCorrect
+                    ? `${phrase} — ${correct.mn} · ${noun.mn}`
+                    : `Зөв хариулт: ${phrase} (${correct.mn} · ${noun.mn})`);
+                return;
+            }
 
             if (currentQuizMode === 3) {
                 const validAnswers = [q.mn, ...(q.altMn || [])].map(a => a.toLowerCase().trim());
