@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Орос хэлний сорил - Дом, быт, еда</title>
+    <title>Орос хэлний сорил - Дом, быт, еда, город</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -301,7 +301,7 @@
             <div class="flex justify-between items-center">
                 <div>
                     <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">📊 Мои достижения и Статистика</h2>
-                    <p class="text-sm text-slate-500 mt-1">Хэсэг 1: Дом, быт, еда (Нийт 31 үг)</p>
+                    <p class="text-sm text-slate-500 mt-1">Дом, быт, еда + Город (Нийт <span id="stats-subtitle-count">62</span> үг)</p>
                 </div>
                 <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition">&larr; Буцах</button>
             </div>
@@ -311,7 +311,7 @@
                     <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-2xl">📚</div>
                     <div>
                         <p class="text-xs text-slate-400 font-bold uppercase">Нийт дагнасан үг</p>
-                        <p id="stat-total-words" class="text-2xl font-extrabold text-slate-800">31</p>
+                        <p id="stat-total-words" class="text-2xl font-extrabold text-slate-800">62</p>
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
@@ -380,6 +380,7 @@
 
     <script>
         const vocabularyData = [
+            // ===== Дом, быт, еда (1–31) =====
             { id: 1,  word: "дом",       accent: "до́м",       gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'м' үсгээр төгссөн", mn: "гэр, байшин", altMn: ["гэр", "байшин"], imgName: "дом" },
             { id: 2,  word: "квартира",  accent: "кварти́ра",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "орон сууц, сууц", altMn: ["орон сууц", "сууц"], imgName: "квартира" },
             { id: 3,  word: "комната",   accent: "ко́мната",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "өрөө", altMn: ["өрөө"], imgName: "комната" },
@@ -410,7 +411,40 @@
             { id: 28, word: "пуговица",  accent: "пу́говица",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "товч", altMn: ["товч"], imgName: "пуговица" },
             { id: 29, word: "одежда",    accent: "оде́жда",    gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "хувцас", altMn: ["хувцас"], imgName: "одежда" },
             { id: 30, word: "шапка",     accent: "ша́пка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "малгай", altMn: ["малгай"], imgName: "шапка" },
-            { id: 31, word: "шарф",      accent: "ша́рф",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'ф' үсгээр төгссөн", mn: "ороолт", altMn: ["ороолт"], imgName: "шарф" }
+            { id: 31, word: "шарф",      accent: "ша́рф",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'ф' үсгээр төгссөн", mn: "ороолт", altMn: ["ороолт"], imgName: "шарф" },
+
+            // ===== Город, места (32–62) =====
+            { id: 32, word: "аптека",      accent: "апте́ка",       gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "эмийн сан", altMn: ["эмийн сан"], imgName: "аптека" },
+            { id: 33, word: "аэропорт",    accent: "аэропо́рт",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'т' үсгээр төгссөн", mn: "нисэх онгоцны буудал", altMn: ["нисэх онгоцны буудал"], imgName: "аэропорт" },
+            { id: 34, word: "библиотека",  accent: "библиоте́ка",   gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "номын сан", altMn: ["номын сан"], imgName: "библиотека" },
+            { id: 35, word: "больница",    accent: "больни́ца",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "эмнэлэг", altMn: ["эмнэлэг"], imgName: "больница" },
+            { id: 36, word: "город",       accent: "го́род",        gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'д' үсгээр төгссөн", mn: "хот", altMn: ["хот"], imgName: "город" },
+            { id: 37, word: "гостиница",   accent: "гости́ница",    gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "зочид буудал", altMn: ["зочид буудал"], imgName: "гостиница" },
+            { id: 38, word: "деревня",     accent: "дере́вня",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-я' эгшгээр төгссөн",             mn: "тосгон, хөдөө", altMn: ["тосгон", "хөдөө"], imgName: "деревня" },
+            { id: 39, word: "институт",    accent: "институ́т",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'т' үсгээр төгссөн", mn: "институт", altMn: ["институт"], imgName: "институт" },
+            { id: 40, word: "кафе",        accent: "кафе́",         gender: "ср.р.", desc: "Харийн гаралтай, эгшгээр төгссөн хувирдаггүй дүнд үг", mn: "кафе", altMn: ["кафе"], imgName: "кафе" },
+            { id: 41, word: "магазин",     accent: "магази́н",      gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'н' үсгээр төгссөн", mn: "дэлгүүр", altMn: ["дэлгүүр"], imgName: "магазин" },
+            { id: 42, word: "метро",       accent: "метро́",        gender: "ср.р.", desc: "Харийн гаралтай, '-о'-гоор төгссөн хувирдаггүй дүнд үг", mn: "метро", altMn: ["метро"], imgName: "метро" },
+            { id: 43, word: "Москва",      accent: "Москва́",       gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "Москва хот", altMn: ["москва хот", "москва"], imgName: "москва" },
+            { id: 44, word: "музей",       accent: "музе́й",        gender: "м.р.",  desc: "Эцсийн төгсгөл нь '-й' үсгээр төгссөн",              mn: "музей", altMn: ["музей"], imgName: "музей" },
+            { id: 45, word: "отель",       accent: "оте́ль",        gender: "м.р.",  desc: "'-ь' (зөөлрүүлэгч)-ээр төгссөн эрэгтэй нэр үг",       mn: "зочид буудал", altMn: ["зочид буудал"], imgName: "отель" },
+            { id: 46, word: "парк",        accent: "па́рк",         gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "цэцэрлэгт хүрээлэн", altMn: ["цэцэрлэгт хүрээлэн"], imgName: "парк" },
+            { id: 47, word: "парковка",    accent: "парко́вка",     gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "зогсоол", altMn: ["зогсоол"], imgName: "парковка" },
+            { id: 48, word: "Петербург",   accent: "Петербу́рг",    gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'г' үсгээр төгссөн", mn: "Санкт-Петербург хот", altMn: ["санкт-петербург хот", "санкт-петербург", "петербург"], imgName: "петербург" },
+            { id: 49, word: "поликлиника", accent: "поликли́ника",  gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "поликлиник, эмнэлэг", altMn: ["поликлиник", "эмнэлэг"], imgName: "поликлиника" },
+            { id: 50, word: "проспект",    accent: "проспе́кт",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'т' үсгээр төгссөн", mn: "өргөн чөлөө", altMn: ["өргөн чөлөө"], imgName: "проспект" },
+            { id: 51, word: "ресторан",    accent: "рестора́н",     gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'н' үсгээр төгссөн", mn: "ресторан", altMn: ["ресторан"], imgName: "ресторан" },
+            { id: 52, word: "родина",      accent: "ро́дина",       gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "эх орон", altMn: ["эх орон"], imgName: "родина" },
+            { id: 53, word: "Россия",      accent: "Росси́я",       gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-ия' хэлбэрээр төгссөн",          mn: "Орос Улс", altMn: ["орос улс", "орос"], imgName: "россия" },
+            { id: 54, word: "рынок",       accent: "ры́нок",        gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'к' үсгээр төгссөн", mn: "зах", altMn: ["зах"], imgName: "рынок" },
+            { id: 55, word: "сад",         accent: "са́д",          gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'д' үсгээр төгссөн", mn: "цэцэрлэг", altMn: ["цэцэрлэг"], imgName: "сад" },
+            { id: 56, word: "станция",     accent: "ста́нция",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-ия' хэлбэрээр төгссөн",          mn: "буудал, станц", altMn: ["буудал", "станц"], imgName: "станция" },
+            { id: 57, word: "столица",     accent: "столи́ца",      gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "нийслэл хот", altMn: ["нийслэл хот", "нийслэл"], imgName: "столица" },
+            { id: 58, word: "страна",      accent: "страна́",       gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "улс орон", altMn: ["улс орон", "улс"], imgName: "страна" },
+            { id: 59, word: "театр",       accent: "теа́тр",        gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'р' үсгээр төгссөн", mn: "театр", altMn: ["театр"], imgName: "театр" },
+            { id: 60, word: "улица",       accent: "у́лица",        gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "гудамж", altMn: ["гудамж"], imgName: "улица" },
+            { id: 61, word: "университет", accent: "университе́т",  gender: "м.р.",  desc: "Эцсийн авиа нь хатуу гишгүүлэгч 'т' үсгээр төгссөн", mn: "их сургууль", altMn: ["их сургууль"], imgName: "университет" },
+            { id: 62, word: "школа",       accent: "шко́ла",        gender: "ж.р.",  desc: "Эцсийн төгсгөл нь '-а' эгшгээр төгссөн",             mn: "сургууль", altMn: ["сургууль"], imgName: "школа" }
         ];
 
         // 6-р дасгал: үгийн род сонгох (4 тогтмол сонголт)
@@ -437,6 +471,40 @@
         let currentQuestionIndex = 0;
         let score = 0;
         let answered = false;
+
+        // ---------- Туслах функцүүд ----------
+        function cleanRu(s) {
+            return (s || '').toLowerCase().replace(/\u0301/g, '').trim();
+        }
+
+        // Ижил монгол орчуулгатай (жишээ нь гостиница / отель) үгсийг зөв хариулт гэж үзнэ
+        function isSameAnswer(a, b) {
+            return a.id === b.id || a.mn === b.mn;
+        }
+
+        // Монгол орчуулга нь давхцаж болзошгүй үгсийг (алдаатай сонголт болгохгүй)
+        function overlapsMeaning(a, b) {
+            if (a.id === b.id || a.mn === b.mn) return true;
+            const setA = [a.mn, ...(a.altMn || [])].map(x => x.toLowerCase().trim());
+            const setB = [b.mn, ...(b.altMn || [])].map(x => x.toLowerCase().trim());
+            return setA.some(x => setB.includes(x));
+        }
+
+        // Зургийн файл байгаа эсэхийг шалгах (images/<imgName>.jpg)
+        const imageAvailability = {};
+        function checkImage(item) {
+            return new Promise(resolve => {
+                if (item.id in imageAvailability) return resolve(imageAvailability[item.id]);
+                const img = new Image();
+                img.onload = () => { imageAvailability[item.id] = true; resolve(true); };
+                img.onerror = () => { imageAvailability[item.id] = false; resolve(false); };
+                img.src = `images/${item.imgName}.jpg`;
+            });
+        }
+        async function getWordsWithImages(pool) {
+            const results = await Promise.all(pool.map(checkImage));
+            return pool.filter((_, i) => results[i]);
+        }
 
         function saveStats() {
             try { localStorage.setItem('ru_vocab_stats_v1', JSON.stringify(userStats)); } catch(e){}
@@ -490,11 +558,21 @@
             return arr;
         }
 
-        function startQuiz(mode) {
+        async function startQuiz(mode) {
             currentQuizMode = mode;
             score = 0;
             currentQuestionIndex = 0;
-            quizQuestions = shuffle(vocabularyData).slice(0, 20);
+
+            let pool = vocabularyData;
+            if (mode === 5) {
+                // Зөвхөн зураг нь байгаа үгсээр 5-р дасгалыг бүрдүүлнэ
+                pool = await getWordsWithImages(vocabularyData);
+                if (pool.length === 0) {
+                    alert('images/ хавтсанд зураг олдсонгүй. (images/<үг>.jpg)');
+                    return;
+                }
+            }
+            quizQuestions = shuffle(pool).slice(0, 20);
 
             showScreen('quiz');
             loadQuestion();
@@ -609,7 +687,8 @@
             optionsContainer.classList.remove('hidden');
             optionsContainer.innerHTML = '';
 
-            let distractors = vocabularyData.filter(v => v.id !== correctItem.id);
+            // Утга нь давхцах (гостиница/отель, больница/поликлиника, дом/юрта гэх мэт) үгсийг алдаатай сонголтоос хасна
+            let distractors = vocabularyData.filter(v => !overlapsMeaning(v, correctItem));
             distractors = shuffle(distractors).slice(0, 3);
             let options = shuffle([correctItem, ...distractors]);
 
@@ -658,7 +737,7 @@
             if (answered) return;
             answered = true;
 
-            const isCorrect = selectedItem.id === correctItem.id;
+            const isCorrect = isSameAnswer(selectedItem, correctItem);
             const optionsContainer = document.getElementById('options-container');
             const buttons = optionsContainer.querySelectorAll('button');
 
@@ -689,8 +768,9 @@
                 const validAnswers = [q.mn, ...(q.altMn || [])].map(a => a.toLowerCase().trim());
                 isCorrect = validAnswers.some(ans => ans.includes(val) || val.includes(ans));
             } else if (currentQuizMode === 4) {
-                const cleanWord = q.word.toLowerCase().replace(/\u0301/g, '');
-                isCorrect = val === cleanWord;
+                // Ижил монгол орчуулгатай үгсийн аль нэгийг бичсэн ч зөв гэж үзнэ (жишээ нь гостиница / отель)
+                const typed = cleanRu(val);
+                isCorrect = vocabularyData.some(v => v.mn === q.mn && cleanRu(v.word) === typed);
             }
 
             showFeedback(isCorrect, q);
@@ -811,6 +891,7 @@
             });
 
             document.getElementById('stat-total-words').textContent = vocabularyData.length;
+            document.getElementById('stats-subtitle-count').textContent = vocabularyData.length;
             document.getElementById('stat-mastered-words').textContent = mastered;
             document.getElementById('stat-error-words').textContent = errors;
         }
