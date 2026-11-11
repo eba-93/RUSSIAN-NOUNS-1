@@ -216,6 +216,18 @@
                     </div>
                 </div>
 
+                <div onclick="showScreen('verbs')" class="sm:col-span-2 lg:col-span-3 bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer flex flex-col justify-between group">
+                    <div>
+                        <div class="h-14 px-4 rounded-2xl bg-lime-100 text-lime-700 flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">🚶 идти́ · е́хать · гуля́ть</div>
+                        <h3 class="font-bold text-slate-800 text-xl">9. Глаголы движения</h3>
+                        <p class="text-slate-500 text-sm mt-2">Үйл үг: орчуулга, управление, өгүүлбэрт нөхөх (4 дасгал).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-sm font-semibold text-lime-700">
+                        <span>12 глагол · 4 дасгал</span>
+                        <span>Цэс &rarr;</span>
+                    </div>
+                </div>
+
                 <div onclick="startErrorCorrectionMode()" class="sm:col-span-2 lg:col-span-3 bg-gradient-to-br from-amber-500 to-orange-600 text-white p-6 rounded-2xl pixar-card cursor-pointer flex flex-col justify-between group shadow-lg">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold text-2xl mb-4 group-hover:rotate-12 transition-transform">🛠️</div>
@@ -325,7 +337,7 @@
             <div class="flex justify-between items-center">
                 <div>
                     <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">📊 Мои достижения и Статистика</h2>
-                    <p class="text-sm text-slate-500 mt-1">Дом, быт, еда + Город + Тэмдэг нэр (Нийт <span id="stats-subtitle-count">62</span> үг)</p>
+                    <p class="text-sm text-slate-500 mt-1">Дом, быт, еда + Город + Тэмдэг нэр + Үйл үг (Нийт <span id="stats-subtitle-count">62</span> үг)</p>
                 </div>
                 <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition">&larr; Буцах</button>
             </div>
@@ -372,6 +384,63 @@
                             </tr>
                         </thead>
                         <tbody id="vocab-table-body" class="divide-y divide-slate-100"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- VERBS MENU SCREEN (9-р хэсэг) -->
+        <div id="screen-verbs" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-900 font-comfortaa">9. Глаголы движения</h2>
+                    <p class="text-sm text-slate-500 mt-1">Үйл үгийн дасгалууд (нэг дасгал 20 тест)</p>
+                </div>
+                <button onclick="showScreen('home')" class="bg-white border border-slate-200 text-slate-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition">&larr; Буцах</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div onclick="startQuiz(91)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer text-center">
+                    <div class="h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center gap-2.5 font-bold text-xl mb-4">
+                        <img src="https://flagcdn.com/w80/ru.png" alt="Россия" class="h-8 w-auto rounded shadow-sm border border-slate-200"><span>→</span><img src="https://flagcdn.com/w80/mn.png" alt="Монгол" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-xl">9.1 Перевод глаголов</h3>
+                    <p class="text-slate-500 text-sm mt-2">Русский → монгольский (НСВ / СВ)</p>
+                </div>
+                <div onclick="startQuiz(92)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer text-center">
+                    <div class="h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center gap-2.5 font-bold text-xl mb-4">
+                        <img src="https://flagcdn.com/w80/mn.png" alt="Монгол" class="h-8 w-auto rounded shadow-sm border border-slate-200"><span>→</span><img src="https://flagcdn.com/w80/ru.png" alt="Россия" class="h-8 w-auto rounded shadow-sm border border-slate-200">
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-xl">9.2 Перевод глаголов</h3>
+                    <p class="text-slate-500 text-sm mt-2">Монгольский → русский (НСВ / СВ)</p>
+                </div>
+                <div onclick="startQuiz(93)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer text-center">
+                    <div class="h-14 rounded-2xl bg-violet-100 text-violet-700 flex items-center justify-center font-bold text-xl mb-4">куда? · к кому?</div>
+                    <h3 class="font-bold text-slate-800 text-xl">9.3 Управление глаголов</h3>
+                    <p class="text-slate-500 text-sm mt-2">Выберите предлог и падеж к вопросу</p>
+                </div>
+                <div onclick="startQuiz(94)" class="bg-white p-6 rounded-2xl border border-slate-100 pixar-card cursor-pointer text-center">
+                    <div class="h-14 rounded-2xl bg-fuchsia-100 text-fuchsia-700 flex items-center justify-center font-bold text-xl mb-4">✍️ Он ___ в школу.</div>
+                    <h3 class="font-bold text-slate-800 text-xl">9.4 Вставьте глагол</h3>
+                    <p class="text-slate-500 text-sm mt-2">Напишите глагол в нужной форме</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-100 shadow-md overflow-hidden">
+                <div class="p-6 bg-slate-50/50 border-b border-slate-100">
+                    <h3 class="font-bold text-slate-800 text-lg">Шпаргалка: үйл үг, управление, жишээ</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-100/70 text-slate-500 uppercase text-xs">
+                            <tr>
+                                <th class="p-4">Глагол</th>
+                                <th class="p-4">Управление</th>
+                                <th class="p-4">Монгол орчуулга</th>
+                                <th class="p-4">Пример</th>
+                            </tr>
+                        </thead>
+                        <tbody id="verbs-table-body" class="divide-y divide-slate-100"></tbody>
                     </table>
                 </div>
             </div>
@@ -528,7 +597,77 @@
                 universal: i < 10   // аль ч нэр үгэнд тохирдог ерөнхий тэмдэг нэрс
             });
         });
+        // ===== Үйл үг: хөдөлгөөний глаголууд (94–105) — 9-р хэсэг =====
+        // pats: [асуух үг, управление (угтвар + пад.), падежийн түлхүүр]
+        // ex:   [өгүүлбэр (___ = үйл үг), хоосон зайд орох хариулт, үндсэн хэлбэр (инфинитив)]
+        const verbCaseLabels = { "Вин": "в/на + Вин.", "Пред": "в/на + Пред.", "Род": "из/с + Род.", "Дат": "к + Дат.", "Твор": "с + Твор." };
+        const verbRaw = [
+            { word: "идти / пойти", acc: "идти́ / пойти́", nsv: "идти́", sv: "пойти́",
+              mn: "явах (явган)", alt: ["явах", "явган"],
+              pats: [["куда?", "в/на + Вин.", "Вин"], ["откуда?", "из/с + Род.", "Род"]],
+              ex: [["Он ___ в школу.", "идёт", "идти́"], ["Мы ___ в парк.", "идём", "идти́"]] },
+            { word: "ходить", acc: "ходи́ть", nsv: "ходи́ть", sv: null,
+              mn: "явах (тогтмол, дахин дахин)", alt: ["явах", "тогтмол", "дахин дахин"],
+              pats: [["куда?", "в/на + Вин.", "Вин"], ["где?", "в/на + Пред.", "Пред"], ["к кому?", "к + Дат.", "Дат"]],
+              ex: [["Анна ___ на концерт.", "ходит", "ходи́ть"], ["Я ___ в библиотеку каждый день.", "хожу", "ходи́ть"]] },
+            { word: "ехать / поехать", acc: "е́хать / пое́хать", nsv: "е́хать", sv: "пое́хать",
+              mn: "явах (унаагаар)", alt: ["явах", "унаагаар"],
+              pats: [["куда?", "в/на + Вин.", "Вин"], ["на чём?", "на + Пред.", "Пред"]],
+              ex: [["Мы ___ в Москву на поезде.", "едем", "е́хать"], ["Она ___ в Петербург на автобусе.", "едет", "е́хать"]] },
+            { word: "ездить", acc: "е́здить", nsv: "е́здить", sv: null,
+              mn: "явах (унаагаар, тогтмол)", alt: ["явах", "унаагаар", "тогтмол"],
+              pats: [["где?", "в/на + Пред.", "Пред"], ["куда?", "в/на + Вин.", "Вин"]],
+              ex: [["Семья ___ на дачу.", "ездит", "е́здить"], ["Мы ___ в Москву каждый год.", "ездим", "е́здить"]] },
+            { word: "приехать / приезжать", acc: "прие́хать / приезжа́ть", nsv: "приезжа́ть", sv: "прие́хать",
+              mn: "ирэх (унаагаар)", alt: ["ирэх", "унаагаар"],
+              pats: [["откуда?", "из/с + Род.", "Род"], ["куда?", "в/на + Вин.", "Вин"]],
+              ex: [["Хуан ___ из Кубы в Петербург.", "приехал", "прие́хать"], ["Брат ___ из деревни в город.", "приехал", "прие́хать"]] },
+            { word: "прилететь / прилетать", acc: "прилете́ть / прилета́ть", nsv: "прилета́ть", sv: "прилете́ть",
+              mn: "нисэж ирэх", alt: ["нисэж ирэх", "нисэх"],
+              pats: [["откуда?", "из/с + Род.", "Род"], ["куда?", "в/на + Вин.", "Вин"]],
+              ex: [["Самолёт ___ из Германии.", "прилетел", "прилете́ть"], ["Туристы ___ из Монголии в Москву.", "прилетели", "прилете́ть"]] },
+            { word: "уехать / уезжать", acc: "уе́хать / уезжа́ть", nsv: "уезжа́ть", sv: "уе́хать",
+              mn: "явах, очих", alt: ["явах", "очих"],
+              pats: [["откуда?", "из/с + Род.", "Род"], ["куда?", "в/на + Вин.", "Вин"]],
+              ex: [["Она ___ из города.", "уехала", "уе́хать"], ["Друзья ___ из Москвы.", "уехали", "уе́хать"]] },
+            { word: "зайти / заходить", acc: "зайти́ / заходи́ть", nsv: "заходи́ть", sv: "зайти́",
+              mn: "ороод гарах, дайрах", alt: ["ороод гарах", "дайрах"],
+              pats: [["куда?", "в/на + Вин.", "Вин"], ["к кому?", "к + Дат.", "Дат"]],
+              ex: [["___ в библиотеку!", "Зайдите", "зайти́"], ["Я ___ к другу после школы.", "зайду", "зайти́"]] },
+            { word: "подойти / подходить", acc: "подойти́ / подходи́ть", nsv: "подходи́ть", sv: "подойти́",
+              mn: "ойртож очих, дөхөх", alt: ["ойртож очих", "дөхөх"],
+              pats: [["к кому? к чему?", "к + Дат.", "Дат"]],
+              ex: [["Студент ___ к учителю.", "подошёл", "подойти́"], ["Девочка ___ к окну.", "подошла", "подойти́"]] },
+            { word: "подняться / подниматься", acc: "подня́ться / поднима́ться", nsv: "поднима́ться", sv: "подня́ться",
+              mn: "дээшлэх, өгсөх", alt: ["дээшлэх", "өгсөх"],
+              pats: [["куда?", "на + Вин.", "Вин"]],
+              ex: [["Мы ___ на верхний этаж.", "поднялись", "подня́ться"], ["Они ___ на крышу.", "поднялись", "подня́ться"]] },
+            { word: "опуститься / опускаться", acc: "опусти́ться / опуска́ться", nsv: "опуска́ться", sv: "опусти́ться",
+              mn: "доошлох, буух", alt: ["доошлох", "буух"],
+              pats: [["куда?", "на/в + Вин.", "Вин"]],
+              ex: [["Туман ___ на город.", "опустился", "опусти́ться"], ["Птица ___ на крышу.", "опустилась", "опусти́ться"]] },
+            { word: "гулять / погулять", acc: "гуля́ть / погуля́ть", nsv: "гуля́ть", sv: "погуля́ть",
+              mn: "салхилах, зугаалах", alt: ["салхилах", "зугаалах"],
+              pats: [["где?", "в/на + Пред.", "Пред"], ["с кем?", "с + Твор.", "Твор"]],
+              ex: [["Дети ___ в парке с собакой.", "гуляют", "гуля́ть"], ["Мы ___ в парке.", "гуляем", "гуля́ть"]] }
+        ];
+        verbRaw.forEach((r, i) => {
+            vocabularyData.push({
+                id: 94 + i,
+                word: r.word,
+                accent: r.acc,
+                gender: "глаг.",
+                pos: "verb",
+                desc: "Үйл үг · " + r.pats.map(p => `${p[0]} (${p[1]})`).join(" · "),
+                mn: r.mn,
+                altMn: r.alt,
+                imgName: r.word,
+                nsv: r.nsv, sv: r.sv,
+                pats: r.pats, ex: r.ex
+            });
+        });
         vocabularyData.forEach(v => { if (!v.pos) v.pos = "noun"; });
+        const verbs = vocabularyData.filter(v => v.pos === 'verb');
 
         // Нэр үг тус бүрийн утгын ангилал (7-р дасгалд ашиглана)
         const nounCats = {
@@ -639,6 +778,7 @@
 
             if (screenId === 'stats') renderStatsScreen();
             else if (screenId === 'error-menu') renderErrorMenuScreen();
+            else if (screenId === 'verbs') renderVerbsScreen();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -656,14 +796,23 @@
             score = 0;
             currentQuestionIndex = 0;
 
-            let pool = vocabularyData;
+            // 9-р хэсэг: үйл үгийн дасгалууд (9.1–9.4)
+            if (mode >= 91 && mode <= 94) {
+                quizQuestions = buildVerbQuestions(mode);
+                showScreen('quiz');
+                loadQuestion();
+                return;
+            }
+
+            // 1–5-р дасгалд үйл үг орохгүй (тэд 9-р хэсэгт тусдаа)
+            let pool = vocabularyData.filter(v => v.pos !== 'verb');
             if (mode === 6 || mode === 7 || mode === 8) {
                 // Род болон зохицлын дасгал зөвхөн нэр үгээр
                 pool = vocabularyData.filter(v => v.pos === 'noun');
             }
             if (mode === 5) {
                 // Зөвхөн зураг нь байгаа үгсээр 5-р дасгалыг бүрдүүлнэ
-                pool = await getWordsWithImages(vocabularyData);
+                pool = await getWordsWithImages(pool);
                 if (pool.length === 0) {
                     alert('images/ хавтсанд зураг олдсонгүй. (images/<үг>.jpg)');
                     return;
@@ -723,7 +872,11 @@
                 5: "5. Работа с картинкой",
                 6: "6. Род существительных",
                 7: "7. Нэр үг болон тэмдэг нэрийн зохицол",
-                8: "8. Зохицол (бичвэрээр)"
+                8: "8. Зохицол (бичвэрээр)",
+                91: "9.1 Глаголы: русский → монгольский",
+                92: "9.2 Глаголы: монгольский → русский",
+                93: "9.3 Управление глаголов",
+                94: "9.4 Вставьте глагол"
             };
             document.getElementById('quiz-mode-title').textContent = titleMap[currentQuizMode] || "Тест";
 
@@ -739,6 +892,10 @@
             svgImageContainer.classList.add('hidden');
             promptContainer.classList.remove('hide-question-text');
             document.getElementById('user-text-input').placeholder = "Введите ответ здесь";
+            // 9.4-д өгүүлбэр урт тул үсгийн хэмжээг бага зэрэг жижигсгэнэ
+            document.getElementById('question-target').className = currentQuizMode === 94
+                ? "text-2xl sm:text-4xl leading-snug font-extrabold text-slate-900 mt-4 font-comfortaa"
+                : "text-4xl sm:text-5xl font-extrabold text-slate-900 mt-4 font-comfortaa";
 
             if (currentQuizMode === 1) {
                 document.getElementById('prompt-badge').textContent = "Орос үг";
@@ -769,6 +926,30 @@
                 document.getElementById('question-target').textContent = q.accent;
                 document.getElementById('question-subtext').textContent = "Выберите род";
                 setupGenderChoice(q);
+            } else if (currentQuizMode === 91) {
+                document.getElementById('prompt-badge').textContent = `Глагол · ${q.task.asp}`;
+                document.getElementById('question-target').textContent = q.task.form;
+                document.getElementById('question-subtext').textContent = "Выберите монгольский перевод";
+                setupVerbChoice(q);
+            } else if (currentQuizMode === 92) {
+                document.getElementById('prompt-badge').textContent = `Монгол утга · ${q.task.asp}`;
+                document.getElementById('question-target').textContent = q.mn;
+                document.getElementById('question-subtext').innerHTML = `Выберите глагол (<b>${q.task.asp}</b>)`;
+                setupVerbChoice(q);
+            } else if (currentQuizMode === 93) {
+                document.getElementById('prompt-badge').textContent = "Управление";
+                document.getElementById('question-target').textContent = q.accent;
+                document.getElementById('question-subtext').innerHTML = `Вопрос: <span class="text-slate-900 font-black text-2xl align-middle">${q.task.q}</span> — выберите предлог и падеж`;
+                setupVerbChoice(q);
+            } else if (currentQuizMode === 94) {
+                document.getElementById('prompt-badge').textContent = "Вставьте глагол";
+                document.getElementById('question-target').textContent = q.task.sentence;
+                document.getElementById('question-subtext').innerHTML = `Глагол: <span class="text-slate-900 font-black text-2xl align-middle">«${q.task.inf}»</span> — напишите нужную форму`;
+                textInputContainer.classList.remove('hidden');
+                const vinp = document.getElementById('user-text-input');
+                vinp.value = '';
+                vinp.placeholder = "Введите глагол в нужной форме";
+                vinp.focus();
             } else if (currentQuizMode === 8) {
                 document.getElementById('prompt-badge').textContent = "Существительное";
                 setupAgreementText(q);
@@ -794,6 +975,113 @@
             }
         }
 
+        // ---------- 9-р хэсэг: үйл үгийн дасгалууд ----------
+        function buildVerbQuestions(mode) {
+            let items = [];
+            verbs.forEach(v => {
+                if (mode === 91 || mode === 92) {
+                    // Үйл үг бүрийн НСВ болон СВ хэлбэр тус бүрийг тусад нь асууна
+                    if (v.nsv) items.push({ ...v, task: { form: v.nsv, asp: "НСВ" } });
+                    if (v.sv)  items.push({ ...v, task: { form: v.sv,  asp: "СВ" } });
+                } else if (mode === 93) {
+                    v.pats.forEach(p => items.push({ ...v, task: { q: p[0], label: p[1], c: p[2] } }));
+                } else if (mode === 94) {
+                    v.ex.forEach(e => items.push({ ...v, task: {
+                        sentence: e[0], answer: e[1], inf: e[2],
+                        full: e[0].replace('___', e[1])
+                    } }));
+                }
+            });
+            return shuffle(items).slice(0, 20);
+        }
+
+        function setupVerbChoice(q) {
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.classList.remove('hidden');
+            optionsContainer.innerHTML = '';
+            const t = q.task;
+            let labels, answer;
+
+            if (currentQuizMode === 91) {
+                // монгол орчуулгын 4 сонголт (утга давхцсан үйл үгийг хасна)
+                answer = q.mn;
+                const d = [];
+                for (const v of shuffle(verbs.filter(v => !overlapsMeaning(v, q)))) {
+                    if (!d.includes(v.mn)) d.push(v.mn);
+                    if (d.length === 3) break;
+                }
+                labels = shuffle([answer, ...d]);
+            } else if (currentQuizMode === 92) {
+                // ижил төрлийн (НСВ/СВ) 4 орос хэлбэр
+                const key = t.asp === "НСВ" ? "nsv" : "sv";
+                answer = t.form;
+                const d = [];
+                for (const v of shuffle(verbs.filter(v => v[key] && !overlapsMeaning(v, q)))) {
+                    if (!d.includes(v[key])) d.push(v[key]);
+                    if (d.length === 3) break;
+                }
+                labels = shuffle([answer, ...d]);
+            } else {
+                // 9.3: зөв управление + өөр падежтай 3 буруу сонголт
+                answer = t.label;
+                const others = Object.keys(verbCaseLabels).filter(c => c !== t.c);
+                labels = shuffle([answer, ...shuffle(others).slice(0, 3).map(c => verbCaseLabels[c])]);
+            }
+
+            labels.forEach(label => {
+                const btn = document.createElement('button');
+                btn.className = "p-5 rounded-2xl border-2 border-slate-100 bg-slate-50/50 hover:bg-indigo-50/50 hover:border-indigo-300 font-bold text-slate-700 transition text-lg btn-bounce shadow-sm text-center";
+                btn.textContent = label;
+                btn.onclick = () => checkVerbChoice(label, answer, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkVerbChoice(label, answer, clickedBtn) {
+            if (answered) return;
+            answered = true;
+            const q = quizQuestions[currentQuestionIndex];
+            const isCorrect = label === answer;
+            const buttons = document.getElementById('options-container').querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            clickedBtn.classList.remove('bg-slate-50/50', 'border-slate-100');
+            if (isCorrect) {
+                clickedBtn.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+            } else {
+                clickedBtn.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
+                buttons.forEach(btn => {
+                    if (btn.textContent === answer) {
+                        btn.classList.remove('bg-slate-50/50', 'border-slate-100');
+                        btn.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+                    }
+                });
+            }
+
+            const ex = q.ex[0][0].replace('___', q.ex[0][1]);
+            let detail;
+            if (currentQuizMode === 93) detail = `${q.accent} + ${q.task.q} → ${answer}  ·  ${ex}`;
+            else detail = `${q.task.form} — ${q.mn}`;
+            showFeedback(isCorrect, q, isCorrect ? detail : `Зөв хариулт: ${detail}`);
+        }
+
+        function renderVerbsScreen() {
+            const body = document.getElementById('verbs-table-body');
+            if (!body) return;
+            body.innerHTML = '';
+            verbs.forEach(v => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition align-top";
+                tr.innerHTML = `
+                    <td class="p-4 font-bold text-indigo-600 font-comfortaa whitespace-nowrap">${v.accent}</td>
+                    <td class="p-4 text-slate-700">${v.pats.map(p => `<div><span class="font-bold">${p[0]}</span> <span class="text-slate-500">(${p[1]})</span></div>`).join('')}</td>
+                    <td class="p-4 font-semibold text-slate-700">${v.mn}</td>
+                    <td class="p-4 text-slate-600">${v.ex[0][0].replace('___', '<b>' + v.ex[0][1] + '</b>')}</td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
         function setupMultipleChoice(correctItem, targetType) {
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.classList.remove('hidden');
@@ -802,7 +1090,7 @@
             // Утга нь давхцах (гостиница/отель, больница/поликлиника, дом/юрта гэх мэт) үгсийг алдаатай сонголтоос хасна
             // Нэг ижил орчуулгатай хоёр үг (гостиница/отель) хоёулаа сонголтонд орохгүй байх
             let distractors = [];
-            for (const v of shuffle(vocabularyData.filter(v => !overlapsMeaning(v, correctItem)))) {
+            for (const v of shuffle(vocabularyData.filter(v => (v.pos === 'verb') === (correctItem.pos === 'verb') && !overlapsMeaning(v, correctItem)))) {
                 if (distractors.some(d => d.mn === v.mn)) continue;
                 distractors.push(v);
                 if (distractors.length === 3) break;
@@ -1043,8 +1331,17 @@
             const q = quizQuestions[currentQuestionIndex];
             let isCorrect = false;
 
+            if (currentQuizMode === 94) {
+                const normV = s => s.toLowerCase().replace(/́/g, '').replace(/ё/g, 'е').replace(/[.!?,]/g, '').replace(/\s+/g, ' ').trim();
+                isCorrect = normV(val) === normV(q.task.answer);
+                showFeedback(isCorrect, q, isCorrect
+                    ? `${q.task.full} — ${q.mn}`
+                    : `Зөв хариулт: ${q.task.full}`);
+                return;
+            }
+
             if (currentQuizMode === 8) {
-                const norm = s => s.toLowerCase().replace(/́/g, '').replace(/ё/g, 'е').replace(/\s+/g, ' ').trim();
+                const norm =s => s.toLowerCase().replace(/́/g, '').replace(/ё/g, 'е').replace(/\s+/g, ' ').trim();
                 const { noun, correct, key } = currentAgreement;
                 const form = correct.forms[key];
                 const typed = norm(val);
